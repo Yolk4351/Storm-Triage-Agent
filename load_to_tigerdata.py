@@ -107,7 +107,8 @@ def load_neighborhoods(conn):
     # Columns ending in _est are placeholders until your team replaces them
     estimated = any(c.endswith("_est") for c in df.columns)
     df = df.rename(columns=lambda c: c.removesuffix("_est")).rename(columns={"neighborhood": "name"})
-    df["data_quality"] = "estimate" if estimated else "real"
+    if "data_quality" not in df:
+        df["data_quality"] = "estimate" if estimated else "real"
 
     cols = ["neighborhood_id", "name", "lat", "lon", "population", "households",
             "median_year_built", "street_trees", "overhead_line_share",

@@ -1,14 +1,14 @@
-neighborhood,lat,lon,population_est,households_est,median_year_built_est,street_trees_est,overhead_line_share_est,medical_device_households_est,age_65_plus_share_est,critical_facilities
-South Buffalo,42.848,-78.81,10000,4500,1925,3000,0.85,40,0.14,
-Kaisertown,42.873,-78.795,10000,4500,1925,3000,0.85,40,0.14,
-Lovejoy,42.887,-78.797,10000,4500,1925,3000,0.85,40,0.14,
-Broadway-Fillmore,42.894,-78.832,10000,4500,1925,3000,0.85,40,0.14,
-Fruit Belt,42.899,-78.86,10000,4500,1925,3000,0.85,40,0.14,
-Masten Park,42.915,-78.845,10000,4500,1925,3000,0.85,40,0.14,
-University Heights,42.95,-78.82,10000,4500,1925,3000,0.85,40,0.14,
-North Buffalo,42.95,-78.855,10000,4500,1925,3000,0.85,40,0.14,
-Riverside,42.955,-78.905,10000,4500,1925,3000,0.85,40,0.14,
-Black Rock,42.935,-78.9,10000,4500,1925,3000,0.85,40,0.14,
-Elmwood Village,42.92,-78.877,10000,4500,1925,3000,0.85,40,0.14,
-West Side,42.905,-78.895,10000,4500,1925,3000,0.85,40,0.14,
-Allentown,42.903,-78.873,10000,4500,1925,3000,0.85,40,0.14,
+neighborhood,lat,lon,population,households,median_year_built,street_trees,overhead_line_share_est,medical_device_households_est,age_65_plus_share,critical_facilities,census_tracts,data_quality
+South Buffalo,42.848,-78.81,24018,10766,1940,5383,0.85,256,0.172,Mercy Hospital of Buffalo,000600 000700 000800 000900 001000 011400,census+open-data; lines & medical estimated
+Kaisertown,42.873,-78.795,7891,3591,1942,1796,0.85,85,0.172,,001900 011000 016700,census+open-data; lines & medical estimated
+Lovejoy,42.887,-78.797,14394,5794,1943,2897,0.85,118,0.129,,002300 002400 009900 011100,census+open-data; lines & medical estimated
+Broadway-Fillmore,42.894,-78.832,14490,5199,1938,2600,0.85,109,0.138,,001601 001602 001700 002703 002704 002801 002802 016600,census+open-data; lines & medical estimated
+Fruit Belt,42.899,-78.86,6885,3631,1957,1816,0.85,99,0.217,Buffalo General Medical Center; Roswell Park Comprehensive Cancer Center,001404 002502 003100 016801,census+open-data; lines & medical estimated
+Masten Park,42.915,-78.845,18991,7435,1939,3718,0.85,174,0.168,Erie County Medical Center (ECMC); Sisters of Charity Hospital,003301 003302 003400 003501 003502 005202 016802,census+open-data; lines & medical estimated
+University Heights,42.95,-78.82,24127,9607,1939,4804,0.85,191,0.124,VA Western New York Medical Center,004300 004500 004601 004701 004702 980500,census+open-data; lines & medical estimated
+North Buffalo,42.95,-78.855,19182,9759,1939,4880,0.85,209,0.143,,004800 004901 004902 005000 005100 008500,census+open-data; lines & medical estimated
+Riverside,42.955,-78.905,12797,4647,1938,2324,0.85,75,0.078,,005700 005801 005802,census+open-data; lines & medical estimated
+Black Rock,42.935,-78.9,14494,5242,1938,2621,0.85,86,0.08,,005500 005900 017100 980000,census+open-data; lines & medical estimated
+Elmwood Village,42.92,-78.877,19067,8929,1938,4464,0.85,208,0.166,,006301 006302 006501 006601 006602 016900,census+open-data; lines & medical estimated
+West Side,42.905,-78.895,20402,8186,1942,4093,0.85,138,0.086,,006100 006901 006903 006904 007000 007103 007104,census+open-data; lines & medical estimated
+Allentown,42.903,-78.873,10785,6451,1938,3226,0.85,143,0.152,Oishei Children's Hospital,006701 006702 006801 006802,census+open-data; lines & medical estimated
