@@ -2,3 +2,5 @@ pandas
 requests
 psycopg[binary]
 python-dotenv
+scikit-learn
+joblib
