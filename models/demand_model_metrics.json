@@ -1,0 +1,61 @@
+{
+  "train_hours": 7272,
+  "validation": {
+    "test_set": "Normal weeks 2022-11-15 to 2022-12-20 (held out)",
+    "test_hours": 840,
+    "model": {
+      "mae_mw": 45.8,
+      "mape_pct": 2.69,
+      "bias_mw": -13.2
+    },
+    "naive_same_hour_yesterday": {
+      "mae_mw": 75.4,
+      "mape_pct": 4.42,
+      "bias_mw": -0.5
+    }
+  },
+  "blizzard": {
+    "test_set": "Dec 2022 Buffalo blizzard week (never seen in training)",
+    "test_hours": 144,
+    "avg_missing_demand_mw": 119.1,
+    "avg_missing_demand_pct": 6.8,
+    "by_day": [
+      {
+        "day": "2022-12-23",
+        "expected_mw": 1783.0,
+        "actual_mw": 1692.0,
+        "missing_mw": 91.0
+      },
+      {
+        "day": "2022-12-24",
+        "expected_mw": 1768.0,
+        "actual_mw": 1708.0,
+        "missing_mw": 60.0
+      },
+      {
+        "day": "2022-12-25",
+        "expected_mw": 1725.0,
+        "actual_mw": 1569.0,
+        "missing_mw": 156.0
+      },
+      {
+        "day": "2022-12-26",
+        "expected_mw": 1795.0,
+        "actual_mw": 1612.0,
+        "missing_mw": 184.0
+      },
+      {
+        "day": "2022-12-27",
+        "expected_mw": 1743.0,
+        "actual_mw": 1631.0,
+        "missing_mw": 112.0
+      },
+      {
+        "day": "2022-12-28",
+        "expected_mw": 1684.0,
+        "actual_mw": 1572.0,
+        "missing_mw": 112.0
+      }
+    ]
+  }
+}
