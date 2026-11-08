@@ -49,7 +49,9 @@ def run_llm_agent(a):
                 if a.replay:
                     print(f"  hour {sim.t}: no cached decision, calling the API")
                 jobs = sim.apply("list_open_jobs", {})    # sent in the first message: saves a round trip
-                log = run_tick(sim, sim.t, system=system, first_observation=("list_open_jobs", jobs))
+                signal = sim.apply("get_grid_signal", {})  # Sense: real regional load gap, every hour
+                log = run_tick(sim, sim.t, system=system,
+                               first_observation=[("get_grid_signal", signal), ("list_open_jobs", jobs)])
                 left = min(len(jobs["idle_crews"]), jobs["open_outages_total"]) - sum(
                     1 for x in log["actions"] if x["tool"] == "dispatch_crew" and x["result"].get("ok"))
                 if left > 0:

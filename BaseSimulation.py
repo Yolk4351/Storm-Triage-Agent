@@ -37,8 +37,9 @@ Each hour:
    neighborhood it is already in, and don't move pre-positioned crews again unless the risk picture changes.
 4) Optional: send_alert with warming-shelter info where homes are already below 50°F and no crew can finish
    within ~3 hours.
-5) Optional: get_grid_signal gives the REAL regional load gap (NYISO WEST zone). It is context about how hard
-   the region is being hit, not a list of which neighborhoods are out; the job list is what to dispatch on.
+5) The first message also contains get_grid_signal: the REAL regional load gap (NYISO WEST zone), actual load vs
+   what the weather predicted. It tells you how hard the whole region is being hit, not which neighborhoods are
+   out; dispatch on the job list. In your hourly explanation, note in a few words what the regional signal shows.
 Busy crews cannot be redirected. Actions are validated; if one is rejected, read the error and adjust.
 Finish with a 1-3 sentence explanation of this hour's decisions."""
 
@@ -66,15 +67,15 @@ MAX_TOKENS = 16000
 
 
 def run_tick(sim, tick, system=SYSTEM, tools=TOOLS, first_observation=None):
-    """One storm hour. first_observation=(tool_name, result) is put in the first message so Claude
-    doesn't spend a round trip asking for it."""
+    """One storm hour. first_observation is a (tool_name, result) pair, or a list of them, put in the first
+    message so Claude doesn't spend round trips asking for them."""
     when = getattr(sim, "w", None)
     stamp = f" ({when['time']:%a %b %d %H:%M})" if when else ""
     text = f"It is hour {tick}{stamp} of the storm. Review the grid and act."
     log = {"tick": tick, "actions": [], "explanation": "", "stop_reasons": [],
            "usage": {"input": 0, "cache_write": 0, "cache_read": 0, "output": 0, "calls": 0}}
-    if first_observation:
-        name, result = first_observation
+    observations = [first_observation] if isinstance(first_observation, tuple) else (first_observation or [])
+    for name, result in observations:
         text += f"\n\nCurrent {name} result:\n{json.dumps(result, default=str)}"
         log["actions"].append({"tool": name, "input": {}, "result": result, "supplied_in_prompt": True})
     messages = [{"role": "user", "content": text}]
