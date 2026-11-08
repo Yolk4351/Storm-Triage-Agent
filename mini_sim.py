@@ -1,6 +1,70 @@
 import json, os, random, sys
 from BaseSimulation import run_tick
 
+# MiniSim's own prompt and tools (the real engine's live in BaseSimulation / sim_engine)
+MINI_SYSTEM = """You are a grid operations dispatcher during a lake-effect snowstorm.
+Each turn you see the current grid state and forecast.
+Priorities each hour:
+1) Every outage that has no crew assigned gets one, largest customer count first, unless a critical facility is out (those come first).
+2) Never redirect a crew that is mid-repair.
+3) Only pre-position a crew if it is idle AND no outage is waiting.
+Dispatch every idle crew every hour; an idle crew is wasted.
+Use the tools to act. Actions are validated; if one is rejected, adjust and try again.
+When done, give a 1-3 sentence explanation of your reasoning for this hour."""
+
+MINI_TOOLS = [
+    {
+        "name": "get_grid_state",
+        "description": "Current outages, loads, crew locations, and risk scores per node.",
+        "input_schema": {"type": "object", "properties": {}},
+    },
+    {
+        "name": "get_forecast",
+        "description": "Predicted outage risk and demand for a node over the next N hours.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"node_id": {"type": "string"}, "hours": {"type": "integer"}},
+            "required": ["node_id", "hours"],
+        },
+    },
+    {
+        "name": "dispatch_crew",
+        "description": "Send a repair crew to a node. Crews are limited and have travel time.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"crew_id": {"type": "string"}, "node_id": {"type": "string"}},
+            "required": ["crew_id", "node_id"],
+        },
+    },
+    {
+        "name": "reroute_power",
+        "description": "Shift load from one feeder to another, bounded by capacity.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"from_feeder": {"type": "string"}, "to_feeder": {"type": "string"}},
+            "required": ["from_feeder", "to_feeder"],
+        },
+    },
+    {
+        "name": "shed_load",
+        "description": "Reduce load on a feeder by a percent to protect critical nodes.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"feeder_id": {"type": "string"}, "percent": {"type": "integer"}},
+            "required": ["feeder_id", "percent"],
+        },
+    },
+    {
+        "name": "open_shelter",
+        "description": "Open a warming shelter in a neighborhood.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"neighborhood": {"type": "string"}},
+            "required": ["neighborhood"],
+        },
+    },
+]
+
 STORM = [0.2, 0.3, 0.5, 0.7, 0.9, 1.0, 0.9, 0.7, 0.5, 0.4, 0.3, 0.2]  # storm intensity per hour
 
 class MiniSim:
@@ -119,7 +183,7 @@ def run_agent(seed=7, replay=False):
                 if not a["tool"].startswith("get_"):
                     sim.apply(a["tool"], a["input"])
         else:
-            log = run_tick(sim, t)
+            log = run_tick(sim, t, system=MINI_SYSTEM, tools=MINI_TOOLS)
             with open(path, "w", encoding="utf-8") as f:
                 json.dump(log, f, indent=2)
         sim.step()
