@@ -13,7 +13,7 @@ rule-based runs here reproduce simulator.py's numbers exactly.
     sim.metrics()
 
 Rule-based policies for comparison:
-    sim.run_policy("baseline")   # largest outage first (National Grid's stated policy)
+    sim.run_policy("baseline")   # simple largest-outage-first policy
     sim.run_policy("rules")      # A's "most urgent first" formula (called "agent" in simulator.py)
 
 Disclose on the slide: get_forecast uses the real future weather from the replay,
