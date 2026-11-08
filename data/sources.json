@@ -1,0 +1,32 @@
+{
+  "street_trees": {
+    "status": "real",
+    "source": "City of Buffalo, Tree Inventory (Dept. of Public Works, Parks & Streets)",
+    "url": "https://data.buffalony.gov/d/n4ni-uuec",
+    "license": "Public Domain (U.S. Government Works)",
+    "granularity": "one row per tree site with lat/lon",
+    "data_as_of": "current inventory on retrieval date (not December 2022)",
+    "method": "excluded VACANT, STUMP, STUMP OBSTRUCTED, unsuitable vacant; assigned to nearest neighborhood center within 1.5 km",
+    "trees_total": 69419,
+    "trees_unassigned_beyond_1_5km": 19146,
+    "retrieved": "2026-11-07"
+  },
+  "medical_device_households": {
+    "status": "real (allocated)",
+    "source": "HHS emPOWER REST Service, Electricity Dependent DME - ALL - ZipLevel",
+    "url": "https://services2.arcgis.com/ZQ4jTQn6k7VPXEwO/arcgis/rest/services/HHS_emPOWER_REST_Service_Public/FeatureServer/1",
+    "license": "public HHS data (de-identified; no license stated)",
+    "measure": "Medicare FFS + Medicare Advantage beneficiaries with a claim for electricity-dependent DME (people, Medicare only; not households)",
+    "granularity": "ZIP code",
+    "zips_in_erie_county": 65,
+    "data_as_of": "current monthly release on retrieval date (not December 2022)",
+    "method": "ZIP counts split to 2020 census tracts by Census ZCTA-tract relationship file, weighted by ACS 2023 tract households x land-area share; summed over each neighborhood's tracts",
+    "crosswalk_url": "https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_tract20_natl.txt",
+    "retrieved": "2026-11-07"
+  },
+  "overhead_line_share": {
+    "status": "placeholder",
+    "value": 0.85,
+    "note": "no public data on overhead vs underground lines by neighborhood found"
+  }
+}

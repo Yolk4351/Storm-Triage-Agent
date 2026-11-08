@@ -1,0 +1,126 @@
+{
+  "adopted_intercept": -9.5,
+  "decision": "kept current value: no intercept gives a positive correlation, so changing it would only tune noise. The simulated outage peak comes ~2 days before the real lost-load peak; the intercept scales outage levels but cannot move their timing.",
+  "what": "Shape comparison: simulated households out (largest_first, mean of seeds) vs real NYISO WEST lost load (actual minus demand_model expected). Plausibility check, not validation.",
+  "window": [
+    "2022-12-23 00:00",
+    "2022-12-27 00:00"
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "selection": "highest hourly Pearson r",
+  "real_peak_6h": "2022-12-26 09:00:00-05:00",
+  "before": {
+    "intercept": -9.5,
+    "pearson_r_hourly": -0.518,
+    "pearson_r_6h_smoothed": -0.552,
+    "pearson_r_daily": -0.899,
+    "real_peak_6h": "2022-12-26 09:00:00-05:00",
+    "sim_peak_6h": "2022-12-24 09:00:00-05:00",
+    "peak_offset_hours": -48,
+    "sim_mean_households_out": 15365
+  },
+  "best": {
+    "intercept": -7.5,
+    "pearson_r_hourly": -0.31,
+    "pearson_r_6h_smoothed": -0.338,
+    "pearson_r_daily": -0.807,
+    "real_peak_6h": "2022-12-26 09:00:00-05:00",
+    "sim_peak_6h": "2022-12-23 21:00:00-05:00",
+    "peak_offset_hours": -60,
+    "sim_mean_households_out": 50119
+  },
+  "grid": [
+    {
+      "intercept": -11.0,
+      "pearson_r_hourly": -0.474,
+      "pearson_r_6h_smoothed": -0.514,
+      "pearson_r_daily": -0.952,
+      "real_peak_6h": "2022-12-26 09:00:00-05:00",
+      "sim_peak_6h": "2022-12-23 18:00:00-05:00",
+      "peak_offset_hours": -63,
+      "sim_mean_households_out": 1583
+    },
+    {
+      "intercept": -10.5,
+      "pearson_r_hourly": -0.543,
+      "pearson_r_6h_smoothed": -0.583,
+      "pearson_r_daily": -0.983,
+      "real_peak_6h": "2022-12-26 09:00:00-05:00",
+      "sim_peak_6h": "2022-12-23 20:00:00-05:00",
+      "peak_offset_hours": -61,
+      "sim_mean_households_out": 3366
+    },
+    {
+      "intercept": -10.0,
+      "pearson_r_hourly": -0.572,
+      "pearson_r_6h_smoothed": -0.616,
+      "pearson_r_daily": -0.972,
+      "real_peak_6h": "2022-12-26 09:00:00-05:00",
+      "sim_peak_6h": "2022-12-24 08:00:00-05:00",
+      "peak_offset_hours": -49,
+      "sim_mean_households_out": 7252
+    },
+    {
+      "intercept": -9.5,
+      "pearson_r_hourly": -0.518,
+      "pearson_r_6h_smoothed": -0.552,
+      "pearson_r_daily": -0.899,
+      "real_peak_6h": "2022-12-26 09:00:00-05:00",
+      "sim_peak_6h": "2022-12-24 09:00:00-05:00",
+      "peak_offset_hours": -48,
+      "sim_mean_households_out": 15365
+    },
+    {
+      "intercept": -9.0,
+      "pearson_r_hourly": -0.459,
+      "pearson_r_6h_smoothed": -0.489,
+      "pearson_r_daily": -0.83,
+      "real_peak_6h": "2022-12-26 09:00:00-05:00",
+      "sim_peak_6h": "2022-12-24 09:00:00-05:00",
+      "peak_offset_hours": -48,
+      "sim_mean_households_out": 24909
+    },
+    {
+      "intercept": -8.5,
+      "pearson_r_hourly": -0.384,
+      "pearson_r_6h_smoothed": -0.41,
+      "pearson_r_daily": -0.785,
+      "real_peak_6h": "2022-12-26 09:00:00-05:00",
+      "sim_peak_6h": "2022-12-24 08:00:00-05:00",
+      "peak_offset_hours": -49,
+      "sim_mean_households_out": 36389
+    },
+    {
+      "intercept": -8.0,
+      "pearson_r_hourly": -0.349,
+      "pearson_r_6h_smoothed": -0.375,
+      "pearson_r_daily": -0.793,
+      "real_peak_6h": "2022-12-26 09:00:00-05:00",
+      "sim_peak_6h": "2022-12-24 08:00:00-05:00",
+      "peak_offset_hours": -49,
+      "sim_mean_households_out": 44072
+    },
+    {
+      "intercept": -7.5,
+      "pearson_r_hourly": -0.31,
+      "pearson_r_6h_smoothed": -0.338,
+      "pearson_r_daily": -0.807,
+      "real_peak_6h": "2022-12-26 09:00:00-05:00",
+      "sim_peak_6h": "2022-12-23 21:00:00-05:00",
+      "peak_offset_hours": -60,
+      "sim_mean_households_out": 50119
+    }
+  ],
+  "run_date": "2026-11-07"
+}

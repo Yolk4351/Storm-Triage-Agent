@@ -1,0 +1,1545 @@
+{
+  "summary": {
+    "largest_first|c4": {
+      "person_hours_below_50f": {
+        "n": 20,
+        "mean": 3750705.35,
+        "sd": 618453.9444643414,
+        "min": 2942529,
+        "max": 5332758
+      },
+      "medical_household_hours_at_risk": {
+        "n": 20,
+        "mean": 35105.6,
+        "sd": 5887.177211175953,
+        "min": 27486,
+        "max": 50979
+      },
+      "critical_facility_hours_dark": {
+        "n": 20,
+        "mean": 145.55,
+        "sd": 53.6513844428229,
+        "min": 49,
+        "max": 227
+      },
+      "household_hours_out": {
+        "n": 20,
+        "mean": 2515946.7,
+        "sd": 343949.842008992,
+        "min": 2046193,
+        "max": 3402334
+      },
+      "peak_households_out": {
+        "n": 20,
+        "mean": 46207.95,
+        "sd": 4654.49711767244,
+        "min": 40094,
+        "max": 57670
+      },
+      "critical_area_hours_any_outage": {
+        "n": 20,
+        "mean": 280.1,
+        "sd": 18.722066912434755,
+        "min": 247,
+        "max": 322
+      },
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "rules|c4": {
+      "person_hours_below_50f": {
+        "n": 20,
+        "mean": 3616273.15,
+        "sd": 582502.3221104178,
+        "min": 2723783,
+        "max": 5039415
+      },
+      "medical_household_hours_at_risk": {
+        "n": 20,
+        "mean": 33200.5,
+        "sd": 5516.213236785196,
+        "min": 24875,
+        "max": 46982
+      },
+      "critical_facility_hours_dark": {
+        "n": 20,
+        "mean": 106.8,
+        "sd": 45.87006821332117,
+        "min": 42,
+        "max": 213
+      },
+      "household_hours_out": {
+        "n": 20,
+        "mean": 2565097.1,
+        "sd": 327230.2525090664,
+        "min": 2025865,
+        "max": 3376031
+      },
+      "peak_households_out": {
+        "n": 20,
+        "mean": 46830.85,
+        "sd": 4362.68811719274,
+        "min": 40638,
+        "max": 56846
+      },
+      "critical_area_hours_any_outage": {
+        "n": 20,
+        "mean": 295.2,
+        "sd": 27.64740398967724,
+        "min": 240,
+        "max": 343
+      },
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "largest_first|c8": {
+      "person_hours_below_50f": {
+        "n": 20,
+        "mean": 1372718.55,
+        "sd": 395581.1403163006,
+        "min": 912809,
+        "max": 2353756
+      },
+      "medical_household_hours_at_risk": {
+        "n": 20,
+        "mean": 12921.45,
+        "sd": 3824.9340204147725,
+        "min": 8577,
+        "max": 22727
+      },
+      "critical_facility_hours_dark": {
+        "n": 20,
+        "mean": 79.85,
+        "sd": 42.48253511119227,
+        "min": 12,
+        "max": 150
+      },
+      "household_hours_out": {
+        "n": 20,
+        "mean": 1392655.15,
+        "sd": 251391.85847078933,
+        "min": 1049851,
+        "max": 2026818
+      },
+      "peak_households_out": {
+        "n": 20,
+        "mean": 38108.4,
+        "sd": 4648.578508250497,
+        "min": 31334,
+        "max": 46460
+      },
+      "critical_area_hours_any_outage": {
+        "n": 20,
+        "mean": 204.65,
+        "sd": 23.716028335284136,
+        "min": 165,
+        "max": 256
+      },
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "rules|c8": {
+      "person_hours_below_50f": {
+        "n": 20,
+        "mean": 1173283.9,
+        "sd": 358583.5132548623,
+        "min": 806747,
+        "max": 2018639
+      },
+      "medical_household_hours_at_risk": {
+        "n": 20,
+        "mean": 10790.7,
+        "sd": 3382.5201769344144,
+        "min": 7415,
+        "max": 18874
+      },
+      "critical_facility_hours_dark": {
+        "n": 20,
+        "mean": 58.85,
+        "sd": 27.06186868717874,
+        "min": 13,
+        "max": 115
+      },
+      "household_hours_out": {
+        "n": 20,
+        "mean": 1410209.25,
+        "sd": 252618.42011262238,
+        "min": 1142775,
+        "max": 2035325
+      },
+      "peak_households_out": {
+        "n": 20,
+        "mean": 38628.95,
+        "sd": 4918.350819821834,
+        "min": 32641,
+        "max": 48679
+      },
+      "critical_area_hours_any_outage": {
+        "n": 20,
+        "mean": 217.75,
+        "sd": 25.94097551223384,
+        "min": 187,
+        "max": 273
+      },
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "llm_agent|c8": {
+      "person_hours_below_50f": {
+        "n": 1,
+        "mean": 629435,
+        "sd": 0.0,
+        "min": 629435,
+        "max": 629435
+      },
+      "medical_household_hours_at_risk": {
+        "n": 1,
+        "mean": 6416,
+        "sd": 0.0,
+        "min": 6416,
+        "max": 6416
+      },
+      "critical_facility_hours_dark": {
+        "n": 1,
+        "mean": 37,
+        "sd": 0.0,
+        "min": 37,
+        "max": 37
+      },
+      "household_hours_out": {
+        "n": 1,
+        "mean": 1123367,
+        "sd": 0.0,
+        "min": 1123367,
+        "max": 1123367
+      },
+      "peak_households_out": {
+        "n": 1,
+        "mean": 31166,
+        "sd": 0.0,
+        "min": 31166,
+        "max": 31166
+      },
+      "critical_area_hours_any_outage": {
+        "n": 1,
+        "mean": 239,
+        "sd": 0.0,
+        "min": 239,
+        "max": 239
+      },
+      "seeds": [
+        42
+      ]
+    },
+    "largest_first|c12": {
+      "person_hours_below_50f": {
+        "n": 20,
+        "mean": 489783.25,
+        "sd": 211748.54375560276,
+        "min": 224895,
+        "max": 962997
+      },
+      "medical_household_hours_at_risk": {
+        "n": 20,
+        "mean": 4696.1,
+        "sd": 2016.8024431601727,
+        "min": 2158,
+        "max": 9407
+      },
+      "critical_facility_hours_dark": {
+        "n": 20,
+        "mean": 51.95,
+        "sd": 27.369739340719843,
+        "min": 12,
+        "max": 104
+      },
+      "household_hours_out": {
+        "n": 20,
+        "mean": 941767.55,
+        "sd": 168829.226754348,
+        "min": 757722,
+        "max": 1338096
+      },
+      "peak_households_out": {
+        "n": 20,
+        "mean": 33342.35,
+        "sd": 4837.404015367616,
+        "min": 26500,
+        "max": 41003
+      },
+      "critical_area_hours_any_outage": {
+        "n": 20,
+        "mean": 172.4,
+        "sd": 21.753160689885963,
+        "min": 122,
+        "max": 217
+      },
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "rules|c12": {
+      "person_hours_below_50f": {
+        "n": 20,
+        "mean": 373451.6,
+        "sd": 181308.1812127453,
+        "min": 172944,
+        "max": 751685
+      },
+      "medical_household_hours_at_risk": {
+        "n": 20,
+        "mean": 3455.2,
+        "sd": 1697.5218656060151,
+        "min": 1586,
+        "max": 7177
+      },
+      "critical_facility_hours_dark": {
+        "n": 20,
+        "mean": 44.1,
+        "sd": 21.203028582083068,
+        "min": 12,
+        "max": 89
+      },
+      "household_hours_out": {
+        "n": 20,
+        "mean": 950598.45,
+        "sd": 177504.93422273765,
+        "min": 763502,
+        "max": 1360605
+      },
+      "peak_households_out": {
+        "n": 20,
+        "mean": 33176.8,
+        "sd": 4967.874602197392,
+        "min": 25776,
+        "max": 41739
+      },
+      "critical_area_hours_any_outage": {
+        "n": 20,
+        "mean": 180.15,
+        "sd": 25.64181412417903,
+        "min": 123,
+        "max": 241
+      },
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "largest_first@llm_agent-seeds|c8": {
+      "person_hours_below_50f": {
+        "n": 1,
+        "mean": 849695,
+        "sd": 0.0,
+        "min": 849695,
+        "max": 849695
+      },
+      "medical_household_hours_at_risk": {
+        "n": 1,
+        "mean": 8390,
+        "sd": 0.0,
+        "min": 8390,
+        "max": 8390
+      },
+      "critical_facility_hours_dark": {
+        "n": 1,
+        "mean": 49,
+        "sd": 0.0,
+        "min": 49,
+        "max": 49
+      },
+      "household_hours_out": {
+        "n": 1,
+        "mean": 1087972,
+        "sd": 0.0,
+        "min": 1087972,
+        "max": 1087972
+      },
+      "peak_households_out": {
+        "n": 1,
+        "mean": 31994,
+        "sd": 0.0,
+        "min": 31994,
+        "max": 31994
+      },
+      "critical_area_hours_any_outage": {
+        "n": 1,
+        "mean": 203,
+        "sd": 0.0,
+        "min": 203,
+        "max": 203
+      },
+      "seeds": [
+        42
+      ]
+    },
+    "rules@llm_agent-seeds|c8": {
+      "person_hours_below_50f": {
+        "n": 1,
+        "mean": 698722,
+        "sd": 0.0,
+        "min": 698722,
+        "max": 698722
+      },
+      "medical_household_hours_at_risk": {
+        "n": 1,
+        "mean": 6785,
+        "sd": 0.0,
+        "min": 6785,
+        "max": 6785
+      },
+      "critical_facility_hours_dark": {
+        "n": 1,
+        "mean": 32,
+        "sd": 0.0,
+        "min": 32,
+        "max": 32
+      },
+      "household_hours_out": {
+        "n": 1,
+        "mean": 1089808,
+        "sd": 0.0,
+        "min": 1089808,
+        "max": 1089808
+      },
+      "peak_households_out": {
+        "n": 1,
+        "mean": 29770,
+        "sd": 0.0,
+        "min": 29770,
+        "max": 29770
+      },
+      "critical_area_hours_any_outage": {
+        "n": 1,
+        "mean": 214,
+        "sd": 0.0,
+        "min": 214,
+        "max": 214
+      },
+      "seeds": [
+        42
+      ]
+    }
+  },
+  "raw": {
+    "largest_first|c4": {
+      "1": {
+        "person_hours_below_50f": 4252002,
+        "household_hours_out": 2784559,
+        "medical_household_hours_at_risk": 39077,
+        "peak_households_out": 49251,
+        "critical_facility_hours_dark": 210,
+        "critical_area_hours_any_outage": 285
+      },
+      "2": {
+        "person_hours_below_50f": 3899685,
+        "household_hours_out": 2551760,
+        "medical_household_hours_at_risk": 36138,
+        "peak_households_out": 46537,
+        "critical_facility_hours_dark": 49,
+        "critical_area_hours_any_outage": 286
+      },
+      "3": {
+        "person_hours_below_50f": 3534505,
+        "household_hours_out": 2479566,
+        "medical_household_hours_at_risk": 33366,
+        "peak_households_out": 47468,
+        "critical_facility_hours_dark": 121,
+        "critical_area_hours_any_outage": 307
+      },
+      "4": {
+        "person_hours_below_50f": 2942529,
+        "household_hours_out": 2046193,
+        "medical_household_hours_at_risk": 27486,
+        "peak_households_out": 40812,
+        "critical_facility_hours_dark": 154,
+        "critical_area_hours_any_outage": 247
+      },
+      "5": {
+        "person_hours_below_50f": 3336150,
+        "household_hours_out": 2295473,
+        "medical_household_hours_at_risk": 31745,
+        "peak_households_out": 43586,
+        "critical_facility_hours_dark": 154,
+        "critical_area_hours_any_outage": 282
+      },
+      "6": {
+        "person_hours_below_50f": 5332758,
+        "household_hours_out": 3402334,
+        "medical_household_hours_at_risk": 50979,
+        "peak_households_out": 57670,
+        "critical_facility_hours_dark": 213,
+        "critical_area_hours_any_outage": 322
+      },
+      "7": {
+        "person_hours_below_50f": 4507681,
+        "household_hours_out": 2913187,
+        "medical_household_hours_at_risk": 42681,
+        "peak_households_out": 52478,
+        "critical_facility_hours_dark": 165,
+        "critical_area_hours_any_outage": 286
+      },
+      "8": {
+        "person_hours_below_50f": 3816729,
+        "household_hours_out": 2546043,
+        "medical_household_hours_at_risk": 36136,
+        "peak_households_out": 47424,
+        "critical_facility_hours_dark": 193,
+        "critical_area_hours_any_outage": 270
+      },
+      "9": {
+        "person_hours_below_50f": 4605559,
+        "household_hours_out": 3007598,
+        "medical_household_hours_at_risk": 42833,
+        "peak_households_out": 53047,
+        "critical_facility_hours_dark": 227,
+        "critical_area_hours_any_outage": 300
+      },
+      "10": {
+        "person_hours_below_50f": 3741126,
+        "household_hours_out": 2473983,
+        "medical_household_hours_at_risk": 35061,
+        "peak_households_out": 42109,
+        "critical_facility_hours_dark": 175,
+        "critical_area_hours_any_outage": 258
+      },
+      "11": {
+        "person_hours_below_50f": 3322444,
+        "household_hours_out": 2279787,
+        "medical_household_hours_at_risk": 31513,
+        "peak_households_out": 44200,
+        "critical_facility_hours_dark": 153,
+        "critical_area_hours_any_outage": 274
+      },
+      "12": {
+        "person_hours_below_50f": 3421279,
+        "household_hours_out": 2337904,
+        "medical_household_hours_at_risk": 31936,
+        "peak_households_out": 46449,
+        "critical_facility_hours_dark": 112,
+        "critical_area_hours_any_outage": 257
+      },
+      "13": {
+        "person_hours_below_50f": 4172265,
+        "household_hours_out": 2765618,
+        "medical_household_hours_at_risk": 38481,
+        "peak_households_out": 47170,
+        "critical_facility_hours_dark": 211,
+        "critical_area_hours_any_outage": 297
+      },
+      "14": {
+        "person_hours_below_50f": 3586900,
+        "household_hours_out": 2472477,
+        "medical_household_hours_at_risk": 32345,
+        "peak_households_out": 43526,
+        "critical_facility_hours_dark": 71,
+        "critical_area_hours_any_outage": 293
+      },
+      "15": {
+        "person_hours_below_50f": 3317536,
+        "household_hours_out": 2279269,
+        "medical_household_hours_at_risk": 31049,
+        "peak_households_out": 42347,
+        "critical_facility_hours_dark": 163,
+        "critical_area_hours_any_outage": 268
+      },
+      "16": {
+        "person_hours_below_50f": 3093259,
+        "household_hours_out": 2169688,
+        "medical_household_hours_at_risk": 29025,
+        "peak_households_out": 40613,
+        "critical_facility_hours_dark": 91,
+        "critical_area_hours_any_outage": 273
+      },
+      "17": {
+        "person_hours_below_50f": 3120636,
+        "household_hours_out": 2167979,
+        "medical_household_hours_at_risk": 29657,
+        "peak_households_out": 40094,
+        "critical_facility_hours_dark": 100,
+        "critical_area_hours_any_outage": 266
+      },
+      "18": {
+        "person_hours_below_50f": 3452425,
+        "household_hours_out": 2334633,
+        "medical_household_hours_at_risk": 32657,
+        "peak_households_out": 43230,
+        "critical_facility_hours_dark": 67,
+        "critical_area_hours_any_outage": 265
+      },
+      "19": {
+        "person_hours_below_50f": 3184799,
+        "household_hours_out": 2163361,
+        "medical_household_hours_at_risk": 29140,
+        "peak_households_out": 45133,
+        "critical_facility_hours_dark": 101,
+        "critical_area_hours_any_outage": 270
+      },
+      "20": {
+        "person_hours_below_50f": 4373840,
+        "household_hours_out": 2847522,
+        "medical_household_hours_at_risk": 40807,
+        "peak_households_out": 51015,
+        "critical_facility_hours_dark": 181,
+        "critical_area_hours_any_outage": 296
+      }
+    },
+    "rules|c4": {
+      "1": {
+        "person_hours_below_50f": 4040230,
+        "household_hours_out": 2837426,
+        "medical_household_hours_at_risk": 36291,
+        "peak_households_out": 49245,
+        "critical_facility_hours_dark": 171,
+        "critical_area_hours_any_outage": 301
+      },
+      "2": {
+        "person_hours_below_50f": 3519109,
+        "household_hours_out": 2510069,
+        "medical_household_hours_at_risk": 32140,
+        "peak_households_out": 42846,
+        "critical_facility_hours_dark": 42,
+        "critical_area_hours_any_outage": 285
+      },
+      "3": {
+        "person_hours_below_50f": 3288135,
+        "household_hours_out": 2418009,
+        "medical_household_hours_at_risk": 30155,
+        "peak_households_out": 46463,
+        "critical_facility_hours_dark": 98,
+        "critical_area_hours_any_outage": 302
+      },
+      "4": {
+        "person_hours_below_50f": 2723783,
+        "household_hours_out": 2025865,
+        "medical_household_hours_at_risk": 24875,
+        "peak_households_out": 40638,
+        "critical_facility_hours_dark": 81,
+        "critical_area_hours_any_outage": 252
+      },
+      "5": {
+        "person_hours_below_50f": 3309053,
+        "household_hours_out": 2402402,
+        "medical_household_hours_at_risk": 30803,
+        "peak_households_out": 45741,
+        "critical_facility_hours_dark": 91,
+        "critical_area_hours_any_outage": 330
+      },
+      "6": {
+        "person_hours_below_50f": 5039415,
+        "household_hours_out": 3376031,
+        "medical_household_hours_at_risk": 46982,
+        "peak_households_out": 56846,
+        "critical_facility_hours_dark": 138,
+        "critical_area_hours_any_outage": 343
+      },
+      "7": {
+        "person_hours_below_50f": 4388776,
+        "household_hours_out": 2943778,
+        "medical_household_hours_at_risk": 41014,
+        "peak_households_out": 52812,
+        "critical_facility_hours_dark": 131,
+        "critical_area_hours_any_outage": 304
+      },
+      "8": {
+        "person_hours_below_50f": 3770226,
+        "household_hours_out": 2614457,
+        "medical_household_hours_at_risk": 35035,
+        "peak_households_out": 47862,
+        "critical_facility_hours_dark": 146,
+        "critical_area_hours_any_outage": 285
+      },
+      "9": {
+        "person_hours_below_50f": 4665170,
+        "household_hours_out": 3137862,
+        "medical_household_hours_at_risk": 42816,
+        "peak_households_out": 54746,
+        "critical_facility_hours_dark": 213,
+        "critical_area_hours_any_outage": 343
+      },
+      "10": {
+        "person_hours_below_50f": 3464710,
+        "household_hours_out": 2491288,
+        "medical_household_hours_at_risk": 31722,
+        "peak_households_out": 43498,
+        "critical_facility_hours_dark": 104,
+        "critical_area_hours_any_outage": 240
+      },
+      "11": {
+        "person_hours_below_50f": 3214673,
+        "household_hours_out": 2316863,
+        "medical_household_hours_at_risk": 29887,
+        "peak_households_out": 45776,
+        "critical_facility_hours_dark": 128,
+        "critical_area_hours_any_outage": 291
+      },
+      "12": {
+        "person_hours_below_50f": 3542735,
+        "household_hours_out": 2533051,
+        "medical_household_hours_at_risk": 32324,
+        "peak_households_out": 50570,
+        "critical_facility_hours_dark": 52,
+        "critical_area_hours_any_outage": 282
+      },
+      "13": {
+        "person_hours_below_50f": 3957325,
+        "household_hours_out": 2803580,
+        "medical_household_hours_at_risk": 35680,
+        "peak_households_out": 46963,
+        "critical_facility_hours_dark": 156,
+        "critical_area_hours_any_outage": 310
+      },
+      "14": {
+        "person_hours_below_50f": 3257441,
+        "household_hours_out": 2410260,
+        "medical_household_hours_at_risk": 28731,
+        "peak_households_out": 44650,
+        "critical_facility_hours_dark": 49,
+        "critical_area_hours_any_outage": 300
+      },
+      "15": {
+        "person_hours_below_50f": 3310300,
+        "household_hours_out": 2358626,
+        "medical_household_hours_at_risk": 30560,
+        "peak_households_out": 43797,
+        "critical_facility_hours_dark": 117,
+        "critical_area_hours_any_outage": 267
+      },
+      "16": {
+        "person_hours_below_50f": 3069605,
+        "household_hours_out": 2233733,
+        "medical_household_hours_at_risk": 28210,
+        "peak_households_out": 41964,
+        "critical_facility_hours_dark": 73,
+        "critical_area_hours_any_outage": 270
+      },
+      "17": {
+        "person_hours_below_50f": 3188640,
+        "household_hours_out": 2377165,
+        "medical_household_hours_at_risk": 29441,
+        "peak_households_out": 42704,
+        "critical_facility_hours_dark": 82,
+        "critical_area_hours_any_outage": 321
+      },
+      "18": {
+        "person_hours_below_50f": 3376118,
+        "household_hours_out": 2440095,
+        "medical_household_hours_at_risk": 31453,
+        "peak_households_out": 43702,
+        "critical_facility_hours_dark": 47,
+        "critical_area_hours_any_outage": 274
+      },
+      "19": {
+        "person_hours_below_50f": 3128398,
+        "household_hours_out": 2277924,
+        "medical_household_hours_at_risk": 28094,
+        "peak_households_out": 45961,
+        "critical_facility_hours_dark": 80,
+        "critical_area_hours_any_outage": 288
+      },
+      "20": {
+        "person_hours_below_50f": 4071621,
+        "household_hours_out": 2793458,
+        "medical_household_hours_at_risk": 37797,
+        "peak_households_out": 49833,
+        "critical_facility_hours_dark": 137,
+        "critical_area_hours_any_outage": 316
+      }
+    },
+    "largest_first|c8": {
+      "1": {
+        "person_hours_below_50f": 1816775,
+        "household_hours_out": 1658408,
+        "medical_household_hours_at_risk": 16684,
+        "peak_households_out": 43639,
+        "critical_facility_hours_dark": 135,
+        "critical_area_hours_any_outage": 225
+      },
+      "2": {
+        "person_hours_below_50f": 1428189,
+        "household_hours_out": 1415809,
+        "medical_household_hours_at_risk": 13383,
+        "peak_households_out": 36584,
+        "critical_facility_hours_dark": 18,
+        "critical_area_hours_any_outage": 187
+      },
+      "3": {
+        "person_hours_below_50f": 1141463,
+        "household_hours_out": 1308336,
+        "medical_household_hours_at_risk": 10799,
+        "peak_households_out": 37754,
+        "critical_facility_hours_dark": 72,
+        "critical_area_hours_any_outage": 214
+      },
+      "4": {
+        "person_hours_below_50f": 912809,
+        "household_hours_out": 1049851,
+        "medical_household_hours_at_risk": 8577,
+        "peak_households_out": 31393,
+        "critical_facility_hours_dark": 60,
+        "critical_area_hours_any_outage": 165
+      },
+      "5": {
+        "person_hours_below_50f": 995058,
+        "household_hours_out": 1182207,
+        "medical_household_hours_at_risk": 9445,
+        "peak_households_out": 34084,
+        "critical_facility_hours_dark": 68,
+        "critical_area_hours_any_outage": 213
+      },
+      "6": {
+        "person_hours_below_50f": 2353756,
+        "household_hours_out": 2026818,
+        "medical_household_hours_at_risk": 22727,
+        "peak_households_out": 46460,
+        "critical_facility_hours_dark": 149,
+        "critical_area_hours_any_outage": 256
+      },
+      "7": {
+        "person_hours_below_50f": 1810629,
+        "household_hours_out": 1641391,
+        "medical_household_hours_at_risk": 17282,
+        "peak_households_out": 42816,
+        "critical_facility_hours_dark": 98,
+        "critical_area_hours_any_outage": 194
+      },
+      "8": {
+        "person_hours_below_50f": 1309928,
+        "household_hours_out": 1358437,
+        "medical_household_hours_at_risk": 12570,
+        "peak_households_out": 36552,
+        "critical_facility_hours_dark": 106,
+        "critical_area_hours_any_outage": 188
+      },
+      "9": {
+        "person_hours_below_50f": 2081024,
+        "household_hours_out": 1838841,
+        "medical_household_hours_at_risk": 19762,
+        "peak_households_out": 45759,
+        "critical_facility_hours_dark": 150,
+        "critical_area_hours_any_outage": 249
+      },
+      "10": {
+        "person_hours_below_50f": 1200177,
+        "household_hours_out": 1270133,
+        "medical_household_hours_at_risk": 11154,
+        "peak_households_out": 31334,
+        "critical_facility_hours_dark": 88,
+        "critical_area_hours_any_outage": 175
+      },
+      "11": {
+        "person_hours_below_50f": 1063704,
+        "household_hours_out": 1208653,
+        "medical_household_hours_at_risk": 10338,
+        "peak_households_out": 36059,
+        "critical_facility_hours_dark": 105,
+        "critical_area_hours_any_outage": 211
+      },
+      "12": {
+        "person_hours_below_50f": 1173086,
+        "household_hours_out": 1286728,
+        "medical_household_hours_at_risk": 10962,
+        "peak_households_out": 37728,
+        "critical_facility_hours_dark": 49,
+        "critical_area_hours_any_outage": 181
+      },
+      "13": {
+        "person_hours_below_50f": 1512289,
+        "household_hours_out": 1509707,
+        "medical_household_hours_at_risk": 13821,
+        "peak_households_out": 40798,
+        "critical_facility_hours_dark": 114,
+        "critical_area_hours_any_outage": 223
+      },
+      "14": {
+        "person_hours_below_50f": 1062318,
+        "household_hours_out": 1218230,
+        "medical_household_hours_at_risk": 9484,
+        "peak_households_out": 34707,
+        "critical_facility_hours_dark": 12,
+        "critical_area_hours_any_outage": 194
+      },
+      "15": {
+        "person_hours_below_50f": 1295873,
+        "household_hours_out": 1355601,
+        "medical_household_hours_at_risk": 12074,
+        "peak_households_out": 37033,
+        "critical_facility_hours_dark": 93,
+        "critical_area_hours_any_outage": 204
+      },
+      "16": {
+        "person_hours_below_50f": 1087383,
+        "household_hours_out": 1217280,
+        "medical_household_hours_at_risk": 10392,
+        "peak_households_out": 33116,
+        "critical_facility_hours_dark": 58,
+        "critical_area_hours_any_outage": 209
+      },
+      "17": {
+        "person_hours_below_50f": 1090584,
+        "household_hours_out": 1200305,
+        "medical_household_hours_at_risk": 10212,
+        "peak_households_out": 33590,
+        "critical_facility_hours_dark": 19,
+        "critical_area_hours_any_outage": 204
+      },
+      "18": {
+        "person_hours_below_50f": 1312210,
+        "household_hours_out": 1326471,
+        "medical_household_hours_at_risk": 12390,
+        "peak_households_out": 40235,
+        "critical_facility_hours_dark": 32,
+        "critical_area_hours_any_outage": 193
+      },
+      "19": {
+        "person_hours_below_50f": 1048557,
+        "household_hours_out": 1146367,
+        "medical_household_hours_at_risk": 9657,
+        "peak_households_out": 37842,
+        "critical_facility_hours_dark": 54,
+        "critical_area_hours_any_outage": 180
+      },
+      "20": {
+        "person_hours_below_50f": 1758559,
+        "household_hours_out": 1633530,
+        "medical_household_hours_at_risk": 16716,
+        "peak_households_out": 44685,
+        "critical_facility_hours_dark": 117,
+        "critical_area_hours_any_outage": 228
+      }
+    },
+    "rules|c8": {
+      "1": {
+        "person_hours_below_50f": 1561030,
+        "household_hours_out": 1733083,
+        "medical_household_hours_at_risk": 14016,
+        "peak_households_out": 45649,
+        "critical_facility_hours_dark": 113,
+        "critical_area_hours_any_outage": 247
+      },
+      "2": {
+        "person_hours_below_50f": 1196340,
+        "household_hours_out": 1385462,
+        "medical_household_hours_at_risk": 11040,
+        "peak_households_out": 37452,
+        "critical_facility_hours_dark": 27,
+        "critical_area_hours_any_outage": 192
+      },
+      "3": {
+        "person_hours_below_50f": 882578,
+        "household_hours_out": 1268587,
+        "medical_household_hours_at_risk": 8054,
+        "peak_households_out": 37914,
+        "critical_facility_hours_dark": 52,
+        "critical_area_hours_any_outage": 212
+      },
+      "4": {
+        "person_hours_below_50f": 806747,
+        "household_hours_out": 1142775,
+        "medical_household_hours_at_risk": 7415,
+        "peak_households_out": 33978,
+        "critical_facility_hours_dark": 57,
+        "critical_area_hours_any_outage": 194
+      },
+      "5": {
+        "person_hours_below_50f": 861282,
+        "household_hours_out": 1187261,
+        "medical_household_hours_at_risk": 7969,
+        "peak_households_out": 32738,
+        "critical_facility_hours_dark": 58,
+        "critical_area_hours_any_outage": 219
+      },
+      "6": {
+        "person_hours_below_50f": 2018639,
+        "household_hours_out": 2035325,
+        "medical_household_hours_at_risk": 18874,
+        "peak_households_out": 48679,
+        "critical_facility_hours_dark": 79,
+        "critical_area_hours_any_outage": 273
+      },
+      "7": {
+        "person_hours_below_50f": 1652708,
+        "household_hours_out": 1682901,
+        "medical_household_hours_at_risk": 15352,
+        "peak_households_out": 43787,
+        "critical_facility_hours_dark": 67,
+        "critical_area_hours_any_outage": 208
+      },
+      "8": {
+        "person_hours_below_50f": 1243231,
+        "household_hours_out": 1408584,
+        "medical_household_hours_at_risk": 11631,
+        "peak_households_out": 37341,
+        "critical_facility_hours_dark": 62,
+        "critical_area_hours_any_outage": 203
+      },
+      "9": {
+        "person_hours_below_50f": 1894013,
+        "household_hours_out": 1897092,
+        "medical_household_hours_at_risk": 17592,
+        "peak_households_out": 46626,
+        "critical_facility_hours_dark": 115,
+        "critical_area_hours_any_outage": 267
+      },
+      "10": {
+        "person_hours_below_50f": 1027083,
+        "household_hours_out": 1343929,
+        "medical_household_hours_at_risk": 9350,
+        "peak_households_out": 32641,
+        "critical_facility_hours_dark": 64,
+        "critical_area_hours_any_outage": 188
+      },
+      "11": {
+        "person_hours_below_50f": 912314,
+        "household_hours_out": 1213068,
+        "medical_household_hours_at_risk": 8685,
+        "peak_households_out": 33666,
+        "critical_facility_hours_dark": 76,
+        "critical_area_hours_any_outage": 230
+      },
+      "12": {
+        "person_hours_below_50f": 974926,
+        "household_hours_out": 1320974,
+        "medical_household_hours_at_risk": 9068,
+        "peak_households_out": 39602,
+        "critical_facility_hours_dark": 38,
+        "critical_area_hours_any_outage": 187
+      },
+      "13": {
+        "person_hours_below_50f": 1217918,
+        "household_hours_out": 1519450,
+        "medical_household_hours_at_risk": 10823,
+        "peak_households_out": 41048,
+        "critical_facility_hours_dark": 72,
+        "critical_area_hours_any_outage": 250
+      },
+      "14": {
+        "person_hours_below_50f": 926585,
+        "household_hours_out": 1209907,
+        "medical_household_hours_at_risk": 8128,
+        "peak_households_out": 33872,
+        "critical_facility_hours_dark": 13,
+        "critical_area_hours_any_outage": 206
+      },
+      "15": {
+        "person_hours_below_50f": 1053406,
+        "household_hours_out": 1294223,
+        "medical_household_hours_at_risk": 9714,
+        "peak_households_out": 35556,
+        "critical_facility_hours_dark": 68,
+        "critical_area_hours_any_outage": 210
+      },
+      "16": {
+        "person_hours_below_50f": 829475,
+        "household_hours_out": 1190342,
+        "medical_household_hours_at_risk": 7642,
+        "peak_households_out": 34588,
+        "critical_facility_hours_dark": 39,
+        "critical_area_hours_any_outage": 217
+      },
+      "17": {
+        "person_hours_below_50f": 951302,
+        "household_hours_out": 1262896,
+        "medical_household_hours_at_risk": 8682,
+        "peak_households_out": 34626,
+        "critical_facility_hours_dark": 24,
+        "critical_area_hours_any_outage": 221
+      },
+      "18": {
+        "person_hours_below_50f": 1034825,
+        "household_hours_out": 1292317,
+        "medical_household_hours_at_risk": 9511,
+        "peak_households_out": 39552,
+        "critical_facility_hours_dark": 29,
+        "critical_area_hours_any_outage": 201
+      },
+      "19": {
+        "person_hours_below_50f": 974343,
+        "household_hours_out": 1229827,
+        "medical_household_hours_at_risk": 8584,
+        "peak_households_out": 39597,
+        "critical_facility_hours_dark": 44,
+        "critical_area_hours_any_outage": 189
+      },
+      "20": {
+        "person_hours_below_50f": 1446933,
+        "household_hours_out": 1586182,
+        "medical_household_hours_at_risk": 13684,
+        "peak_households_out": 43667,
+        "critical_facility_hours_dark": 80,
+        "critical_area_hours_any_outage": 241
+      }
+    },
+    "llm_agent|c8": {
+      "42": {
+        "person_hours_below_50f": 629435,
+        "household_hours_out": 1123367,
+        "medical_household_hours_at_risk": 6416,
+        "peak_households_out": 31166,
+        "critical_facility_hours_dark": 37,
+        "critical_area_hours_any_outage": 239
+      }
+    },
+    "largest_first|c12": {
+      "1": {
+        "person_hours_below_50f": 748359,
+        "household_hours_out": 1130391,
+        "medical_household_hours_at_risk": 6844,
+        "peak_households_out": 38362,
+        "critical_facility_hours_dark": 104,
+        "critical_area_hours_any_outage": 192
+      },
+      "2": {
+        "person_hours_below_50f": 504084,
+        "household_hours_out": 943158,
+        "medical_household_hours_at_risk": 4750,
+        "peak_households_out": 33859,
+        "critical_facility_hours_dark": 17,
+        "critical_area_hours_any_outage": 159
+      },
+      "3": {
+        "person_hours_below_50f": 244224,
+        "household_hours_out": 834586,
+        "medical_household_hours_at_risk": 2364,
+        "peak_households_out": 29211,
+        "critical_facility_hours_dark": 52,
+        "critical_area_hours_any_outage": 182
+      },
+      "4": {
+        "person_hours_below_50f": 353718,
+        "household_hours_out": 783531,
+        "medical_household_hours_at_risk": 3432,
+        "peak_households_out": 27119,
+        "critical_facility_hours_dark": 34,
+        "critical_area_hours_any_outage": 164
+      },
+      "5": {
+        "person_hours_below_50f": 320855,
+        "household_hours_out": 811659,
+        "medical_household_hours_at_risk": 3264,
+        "peak_households_out": 28090,
+        "critical_facility_hours_dark": 41,
+        "critical_area_hours_any_outage": 185
+      },
+      "6": {
+        "person_hours_below_50f": 962997,
+        "household_hours_out": 1338096,
+        "medical_household_hours_at_risk": 9407,
+        "peak_households_out": 39403,
+        "critical_facility_hours_dark": 82,
+        "critical_area_hours_any_outage": 212
+      },
+      "7": {
+        "person_hours_below_50f": 813483,
+        "household_hours_out": 1172490,
+        "medical_household_hours_at_risk": 7792,
+        "peak_households_out": 41003,
+        "critical_facility_hours_dark": 66,
+        "critical_area_hours_any_outage": 164
+      },
+      "8": {
+        "person_hours_below_50f": 459919,
+        "household_hours_out": 916103,
+        "medical_household_hours_at_risk": 4497,
+        "peak_households_out": 32752,
+        "critical_facility_hours_dark": 40,
+        "critical_area_hours_any_outage": 162
+      },
+      "9": {
+        "person_hours_below_50f": 889385,
+        "household_hours_out": 1262651,
+        "medical_household_hours_at_risk": 8414,
+        "peak_households_out": 40550,
+        "critical_facility_hours_dark": 103,
+        "critical_area_hours_any_outage": 217
+      },
+      "10": {
+        "person_hours_below_50f": 379973,
+        "household_hours_out": 827145,
+        "medical_household_hours_at_risk": 3819,
+        "peak_households_out": 26500,
+        "critical_facility_hours_dark": 67,
+        "critical_area_hours_any_outage": 149
+      },
+      "11": {
+        "person_hours_below_50f": 390042,
+        "household_hours_out": 802022,
+        "medical_household_hours_at_risk": 3952,
+        "peak_households_out": 27025,
+        "critical_facility_hours_dark": 70,
+        "critical_area_hours_any_outage": 180
+      },
+      "12": {
+        "person_hours_below_50f": 329932,
+        "household_hours_out": 847393,
+        "medical_household_hours_at_risk": 3170,
+        "peak_households_out": 31512,
+        "critical_facility_hours_dark": 32,
+        "critical_area_hours_any_outage": 156
+      },
+      "13": {
+        "person_hours_below_50f": 505122,
+        "household_hours_out": 1009182,
+        "medical_household_hours_at_risk": 4666,
+        "peak_households_out": 36530,
+        "critical_facility_hours_dark": 67,
+        "critical_area_hours_any_outage": 190
+      },
+      "14": {
+        "person_hours_below_50f": 368289,
+        "household_hours_out": 896645,
+        "medical_household_hours_at_risk": 3397,
+        "peak_households_out": 31270,
+        "critical_facility_hours_dark": 12,
+        "critical_area_hours_any_outage": 179
+      },
+      "15": {
+        "person_hours_below_50f": 423711,
+        "household_hours_out": 884724,
+        "medical_household_hours_at_risk": 4064,
+        "peak_households_out": 32468,
+        "critical_facility_hours_dark": 62,
+        "critical_area_hours_any_outage": 168
+      },
+      "16": {
+        "person_hours_below_50f": 224895,
+        "household_hours_out": 757722,
+        "medical_household_hours_at_risk": 2158,
+        "peak_households_out": 29417,
+        "critical_facility_hours_dark": 35,
+        "critical_area_hours_any_outage": 162
+      },
+      "17": {
+        "person_hours_below_50f": 416887,
+        "household_hours_out": 836487,
+        "medical_household_hours_at_risk": 4056,
+        "peak_households_out": 31808,
+        "critical_facility_hours_dark": 19,
+        "critical_area_hours_any_outage": 173
+      },
+      "18": {
+        "person_hours_below_50f": 447383,
+        "household_hours_out": 907191,
+        "medical_household_hours_at_risk": 4329,
+        "peak_households_out": 36295,
+        "critical_facility_hours_dark": 25,
+        "critical_area_hours_any_outage": 152
+      },
+      "19": {
+        "person_hours_below_50f": 358772,
+        "household_hours_out": 793929,
+        "medical_household_hours_at_risk": 3161,
+        "peak_households_out": 32846,
+        "critical_facility_hours_dark": 33,
+        "critical_area_hours_any_outage": 122
+      },
+      "20": {
+        "person_hours_below_50f": 653635,
+        "household_hours_out": 1080246,
+        "medical_household_hours_at_risk": 6386,
+        "peak_households_out": 40827,
+        "critical_facility_hours_dark": 78,
+        "critical_area_hours_any_outage": 180
+      }
+    },
+    "rules|c12": {
+      "1": {
+        "person_hours_below_50f": 511458,
+        "household_hours_out": 1131771,
+        "medical_household_hours_at_risk": 4488,
+        "peak_households_out": 38391,
+        "critical_facility_hours_dark": 89,
+        "critical_area_hours_any_outage": 198
+      },
+      "2": {
+        "person_hours_below_50f": 394651,
+        "household_hours_out": 934615,
+        "medical_household_hours_at_risk": 3569,
+        "peak_households_out": 33859,
+        "critical_facility_hours_dark": 18,
+        "critical_area_hours_any_outage": 165
+      },
+      "3": {
+        "person_hours_below_50f": 198913,
+        "household_hours_out": 857415,
+        "medical_household_hours_at_risk": 1764,
+        "peak_households_out": 30557,
+        "critical_facility_hours_dark": 44,
+        "critical_area_hours_any_outage": 182
+      },
+      "4": {
+        "person_hours_below_50f": 213833,
+        "household_hours_out": 763502,
+        "medical_household_hours_at_risk": 2042,
+        "peak_households_out": 27006,
+        "critical_facility_hours_dark": 37,
+        "critical_area_hours_any_outage": 166
+      },
+      "5": {
+        "person_hours_below_50f": 254382,
+        "household_hours_out": 807846,
+        "medical_household_hours_at_risk": 2406,
+        "peak_households_out": 27841,
+        "critical_facility_hours_dark": 45,
+        "critical_area_hours_any_outage": 188
+      },
+      "6": {
+        "person_hours_below_50f": 751685,
+        "household_hours_out": 1360605,
+        "medical_household_hours_at_risk": 7177,
+        "peak_households_out": 39505,
+        "critical_facility_hours_dark": 50,
+        "critical_area_hours_any_outage": 241
+      },
+      "7": {
+        "person_hours_below_50f": 670353,
+        "household_hours_out": 1181888,
+        "medical_household_hours_at_risk": 6262,
+        "peak_households_out": 40554,
+        "critical_facility_hours_dark": 51,
+        "critical_area_hours_any_outage": 173
+      },
+      "8": {
+        "person_hours_below_50f": 394711,
+        "household_hours_out": 937238,
+        "medical_household_hours_at_risk": 3704,
+        "peak_households_out": 31537,
+        "critical_facility_hours_dark": 35,
+        "critical_area_hours_any_outage": 168
+      },
+      "9": {
+        "person_hours_below_50f": 732266,
+        "household_hours_out": 1301393,
+        "medical_household_hours_at_risk": 6676,
+        "peak_households_out": 41739,
+        "critical_facility_hours_dark": 89,
+        "critical_area_hours_any_outage": 226
+      },
+      "10": {
+        "person_hours_below_50f": 231189,
+        "household_hours_out": 832948,
+        "medical_household_hours_at_risk": 2261,
+        "peak_households_out": 25776,
+        "critical_facility_hours_dark": 46,
+        "critical_area_hours_any_outage": 162
+      },
+      "11": {
+        "person_hours_below_50f": 262522,
+        "household_hours_out": 830265,
+        "medical_household_hours_at_risk": 2680,
+        "peak_households_out": 27025,
+        "critical_facility_hours_dark": 49,
+        "critical_area_hours_any_outage": 186
+      },
+      "12": {
+        "person_hours_below_50f": 231246,
+        "household_hours_out": 864584,
+        "medical_household_hours_at_risk": 2099,
+        "peak_households_out": 30801,
+        "critical_facility_hours_dark": 33,
+        "critical_area_hours_any_outage": 160
+      },
+      "13": {
+        "person_hours_below_50f": 362925,
+        "household_hours_out": 1000887,
+        "medical_household_hours_at_risk": 3196,
+        "peak_households_out": 36530,
+        "critical_facility_hours_dark": 53,
+        "critical_area_hours_any_outage": 205
+      },
+      "14": {
+        "person_hours_below_50f": 242979,
+        "household_hours_out": 836266,
+        "medical_household_hours_at_risk": 2106,
+        "peak_households_out": 30236,
+        "critical_facility_hours_dark": 12,
+        "critical_area_hours_any_outage": 179
+      },
+      "15": {
+        "person_hours_below_50f": 362894,
+        "household_hours_out": 908516,
+        "medical_household_hours_at_risk": 3429,
+        "peak_households_out": 31887,
+        "critical_facility_hours_dark": 46,
+        "critical_area_hours_any_outage": 174
+      },
+      "16": {
+        "person_hours_below_50f": 172944,
+        "household_hours_out": 774394,
+        "medical_household_hours_at_risk": 1586,
+        "peak_households_out": 29543,
+        "critical_facility_hours_dark": 27,
+        "critical_area_hours_any_outage": 171
+      },
+      "17": {
+        "person_hours_below_50f": 322150,
+        "household_hours_out": 873762,
+        "medical_household_hours_at_risk": 2972,
+        "peak_households_out": 32170,
+        "critical_facility_hours_dark": 23,
+        "critical_area_hours_any_outage": 176
+      },
+      "18": {
+        "person_hours_below_50f": 316301,
+        "household_hours_out": 910124,
+        "medical_household_hours_at_risk": 2950,
+        "peak_households_out": 35262,
+        "critical_facility_hours_dark": 23,
+        "critical_area_hours_any_outage": 159
+      },
+      "19": {
+        "person_hours_below_50f": 256566,
+        "household_hours_out": 771718,
+        "medical_household_hours_at_risk": 2215,
+        "peak_households_out": 32490,
+        "critical_facility_hours_dark": 35,
+        "critical_area_hours_any_outage": 123
+      },
+      "20": {
+        "person_hours_below_50f": 585064,
+        "household_hours_out": 1132232,
+        "medical_household_hours_at_risk": 5522,
+        "peak_households_out": 40827,
+        "critical_facility_hours_dark": 77,
+        "critical_area_hours_any_outage": 201
+      }
+    },
+    "largest_first@llm_agent-seeds|c8": {
+      "42": {
+        "person_hours_below_50f": 849695,
+        "household_hours_out": 1087972,
+        "medical_household_hours_at_risk": 8390,
+        "peak_households_out": 31994,
+        "critical_facility_hours_dark": 49,
+        "critical_area_hours_any_outage": 203
+      }
+    },
+    "rules@llm_agent-seeds|c8": {
+      "42": {
+        "person_hours_below_50f": 698722,
+        "household_hours_out": 1089808,
+        "medical_household_hours_at_risk": 6785,
+        "peak_households_out": 29770,
+        "critical_facility_hours_dark": 32,
+        "critical_area_hours_any_outage": 214
+      }
+    }
+  }
+}
