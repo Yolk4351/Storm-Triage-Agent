@@ -37,8 +37,26 @@ Each hour:
    neighborhood it is already in, and don't move pre-positioned crews again unless the risk picture changes.
 4) Optional: send_alert with warming-shelter info where homes are already below 50°F and no crew can finish
    within ~3 hours.
+5) Optional: get_grid_signal gives the REAL regional load gap (NYISO WEST zone). It is context about how hard
+   the region is being hit, not a list of which neighborhoods are out; the job list is what to dispatch on.
 Busy crews cannot be redirected. Actions are validated; if one is rejected, read the error and adjust.
 Finish with a 1-3 sentence explanation of this hour's decisions."""
+
+# Ablation prompt: same instructions, minus the vulnerability data the agent can no longer see
+# (age_65_plus_share and medical_device_households are removed from its tools in this run).
+_VULN_LINES = {
+    "Secondary scores: medical-device households in\ncold homes, hours a neighborhood with a critical facility "
+    "has any outage, and total household-hours without power.":
+        "Secondary scores: hours a neighborhood with a\ncritical facility has any outage, and total household-hours "
+        "without power.",
+    "- Use critical facilities and medical-device households to break near-ties. Don't let them outweigh many "
+    "more people.":
+        "- Use critical facilities to break near-ties. Don't let them outweigh many more people.",
+}
+SYSTEM_NO_VULNERABILITY = SYSTEM
+for _old, _new in _VULN_LINES.items():
+    assert _old in SYSTEM_NO_VULNERABILITY, f"ablation prompt out of sync with SYSTEM: {_old[:40]!r}"
+    SYSTEM_NO_VULNERABILITY = SYSTEM_NO_VULNERABILITY.replace(_old, _new)
 
 MAX_STEPS = 10  # cap tool-call rounds per hour so it can't loop forever
 # Sonnet 5.5 thinks before acting and thinking counts toward max_tokens. With a long job list and 8 idle
