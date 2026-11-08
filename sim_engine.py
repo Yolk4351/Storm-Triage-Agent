@@ -31,7 +31,8 @@ from datetime import datetime
 
 import simulator as S
 
-RULE_POLICIES = {"largest_first": "largest_first", "rules": "rules"}  # policy name -> simulator.choose_job name
+RULE_POLICIES = {"largest_first": "largest_first", "rules": "rules"}  # the two rule-based policies
+POLICY_ALIASES = {"baseline": "largest_first", "agent": "rules"}       # old names, still accepted
 MAX_FORECAST_HOURS = 12
 
 
@@ -162,6 +163,9 @@ class Simulator:
     # ------------------------------------------------------- rule-based policies
     def auto_dispatch(self, policy):
         """Give every idle crew a job using a rule-based policy ('largest_first' or 'rules')."""
+        policy = POLICY_ALIASES.get(policy, policy)
+        if policy not in RULE_POLICIES:
+            raise ValueError(f"Unknown policy '{policy}'. Use one of: {', '.join(RULE_POLICIES)}")
         name = RULE_POLICIES[policy]
         for cr in self.crews:
             if not self._idle(cr):
