@@ -60,6 +60,7 @@ class Simulator:
         self.C = {cr.cid: cr for cr in self.crews}
 
         self.states, self.events = [], []
+        self.critical_circuit_hours_out = 0  # hours a critical facility's own circuit was dark
         self.cum_snow = 0.0
         self.road_kmh = 40.0
         self.t = 0
@@ -129,6 +130,8 @@ class Simulator:
     def _record(self):
         """Step 5 of an hour: one state row per neighborhood (same columns as simulator.py)."""
         w = self.w
+        self.critical_circuit_hours_out += sum(1 for cs in self.circuits.values() for c in cs
+                                               if c.critical and not c.up)
         for h in self.hoods:
             nid, cs = h["neighborhood_id"], self.circuits[h["neighborhood_id"]]
             p = S.failure_prob(w, self._tree_norm(h), h["overhead_line_share"])
@@ -179,7 +182,10 @@ class Simulator:
         if not self.states:
             return {}
         m = S.score(self.states, self.H)
-        m["critical_facility_hours_out"] = sum(
+        # Hours a hospital/shelter/water plant's own circuit was out (the facility itself was dark)
+        m["critical_facility_hours_dark"] = self.critical_circuit_hours_out
+        # Old scoreboard definition: hours a neighborhood with a critical facility had ANY home out
+        m["critical_area_hours_any_outage"] = sum(
             1 for s in self.states if s[3] > 0 and (self.H[s[1]]["critical_facilities"] or "").strip())
         return m
 
