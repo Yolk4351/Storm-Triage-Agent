@@ -61,7 +61,7 @@ We compare the *shape over time* of two curves for Dec 23–27, 2022:
 
 Only the shape is compared (correlation, peak timing), never absolute MW: the NYISO zone is much larger than our 13 neighborhoods. Lost load also reflects changed human behavior (closed businesses, the driving ban, the Christmas holiday), so this is a **plausibility check, not validation**.
 
-**Result:** the curves do not match. Hourly correlation is **−0.52** at the current failure intercept (−9.5). Simulated outages peak around Dec 24, about 2 days before real lost load peaks (Dec 26, 09:00). A coarse grid search over the failure intercept (−11 to −7.5), the only scalar we allowed ourselves to adjust, never gave a positive correlation (best −0.31). So we **kept −9.5**: the intercept scales how many outages happen but cannot move when they happen. The likely gap is restoration speed. In the real storm outages piled up for days while crews could not reach them; in the simulator they are repaired within hours. Full grid and decision: `data/calibration.json`.
+**Result:** the curves do not match. Hourly correlation is **−0.59** at the current failure intercept (−9.5), with the real neighborhood data. Simulated outages peak around Dec 24, about 2 days before real lost load peaks (Dec 26, 09:00). A coarse grid search over the failure intercept (−11 to −7.5), the only scalar we allowed ourselves to adjust, never gave a positive correlation (best −0.38). So we **kept −9.5**: the intercept scales how many outages happen but cannot move when they happen. The likely gap is restoration speed. In the real storm outages piled up for days while crews could not reach them; in the simulator they are repaired within hours. Full grid and decision: `data/calibration.json`.
 
 ## Neighborhood data sources (`fetch_real_attributes.py`, details in `data/sources.json`)
 
@@ -73,6 +73,8 @@ Only the shape is compared (correlation, peak timing), never absolute MW: the NY
 | population, households, year built, 65+ share | Real | Census ACS 2023 5-year, by tract | Tracts assigned to the nearest neighborhood center, so boundaries are approximate. |
 
 With real tree counts, outage risk now differs by neighborhood: 0.19 (Kaisertown) to 0.42 (Elmwood Village) at the worst storm hour, where before it was 0.42 everywhere. The failure model scales tree density relative to the densest neighborhood, so most neighborhoods now fail less often and the simulated storm is milder overall.
+
+**Official values are `data/neighborhoods.csv`.** The shared Tiger Cloud `neighborhoods` table currently has the same tree counts but different medical-device numbers from an earlier load. Run `python load_to_tigerdata.py` once the team agrees, so the simulator (which reads the database) matches this file.
 
 ## Data disclosure (required by the hackathon rules)
 - **Real:** hourly weather (Open-Meteo ERA5 reanalysis for one downtown grid cell) and NYISO load.

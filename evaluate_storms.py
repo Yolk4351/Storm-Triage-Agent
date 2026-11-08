@@ -1,7 +1,7 @@
 """
-Does the result hold across storms? The baseline-vs-agent comparison of simulator.py, on 7 real Buffalo storms.
+Does the result hold across storms? The largest_first vs rules comparison of simulator.py, on 7 real Buffalo storms.
 
-  baseline = largest outage first; agent = the "most urgent first" rules formula (simulator.py names)
+  largest_first = simple largest-outage-first reference policy; rules = hand-built "most urgent first" formula
 
 For each storm: download REAL hourly weather (Open-Meteo) once and cache it in data/storms/,
 then run both policies on many seeds x crew counts. Weather is used raw
@@ -27,7 +27,7 @@ HERE = Path(__file__).parent
 CACHE = HERE / "data" / "storms"
 METRICS = ["person_hours_below_50f", "medical_household_hours_at_risk", "household_hours_out",
            "peak_households_out"]          # whatever simulator.score() returns, in this order
-REFERENCE = "baseline"
+REFERENCE = "largest_first"
 
 # storm_id, name, first local hour, end (exclusive). NYISO era, all hit the city itself.
 STORMS = [
@@ -105,7 +105,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--seeds", type=int, default=10)
     ap.add_argument("--crews", default="4,8,12")
-    ap.add_argument("--policies", default="baseline,agent")
+    ap.add_argument("--policies", default="largest_first,rules")
     ap.add_argument("--storms", default="all", help="comma list of storm_ids, or 'all'")
     ap.add_argument("--save", action="store_true")
     a = ap.parse_args()
@@ -154,8 +154,8 @@ def main():
     lines = ["# Results across storms",
              "",
              f"Real hourly weather for each storm (raw, no snowfall scaling); simulated grid, outages, crews and "
-             f"indoor temperatures. {a.seeds} seeds per cell. Each cell: mean paired % change of agent (rules formula) "
-             f"vs baseline (largest outage first) on "
+             f"indoor temperatures. {a.seeds} seeds per cell. Each cell: mean paired % change of rules (hand-built formula) "
+             f"vs largest_first (largest outage first) on "
              f"the same seed (negative = better), and in how many seeds it was lower.",
              "", "## Storms", "", "| " + " | ".join(info.columns) + " |", "|" + "---|" * len(info.columns)]
     lines += ["| " + " | ".join(str(v) for v in r) + " |" for r in info.itertuples(index=False)]
@@ -171,7 +171,7 @@ def main():
                     cells.append("n/a (0 in both)" if np.isnan(pct) else f"{pct:+.1f}% ({better}/{n})")
                 lines.append(f"| {r.storm} | {r.max_gust_mph} mph | {r.min_temp_f}°F | " + " | ".join(cells) + " |")
     md = "\n".join(lines)
-    (HERE / "data" / "storms_summary.md").write_text(md)
+    (HERE / "data" / "storms_summary.md").write_text(md, encoding="utf-8")
     print("\n" + md)
 
 

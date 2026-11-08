@@ -22,7 +22,7 @@ import simulator as S
 from sim_engine import Simulator
 
 OUT = Path(__file__).parent / "results"
-POLICIES = {"largest_first": "baseline", "rules": "rules"}   # display name -> engine policy name
+POLICIES = {"largest_first": "largest_first", "rules": "rules"}   # display name -> engine policy name
 METRICS = ["person_hours_below_50f", "medical_household_hours_at_risk", "critical_facility_hours_dark",
            "household_hours_out", "peak_households_out"]
 

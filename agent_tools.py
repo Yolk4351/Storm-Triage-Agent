@@ -17,12 +17,8 @@ MAX_JOBS_LISTED = 30
 class AgentSim:
     """Wraps a Simulator; adds list_open_jobs and dispatch_crew(outage_id=...). Everything else passes through."""
 
-    def __init__(self, sim, forecast="perfect"):
-        """forecast: 'perfect' = real future weather (default); 'persistence' = assume the current hour's
-        weather continues (a deliberately weak forecast, for the sensitivity run)."""
-        if forecast not in ("perfect", "persistence"):
-            raise ValueError("forecast must be 'perfect' or 'persistence'")
-        self.sim, self.forecast_mode = sim, forecast
+    def __init__(self, sim):
+        self.sim = sim
 
     def __getattr__(self, name):          # done, t, w, step(), metrics(), result(), ...
         return getattr(self.sim, name)
@@ -32,41 +28,7 @@ class AgentSim:
             return self.open_jobs()
         if name == "dispatch_crew" and args.get("outage_id"):
             return self.dispatch_outage(args.get("crew_id", ""), args["outage_id"], args.get("reason", ""))
-        if name == "get_grid_state":
-            return self.grid_state()
-        if name == "get_forecast" and self.forecast_mode == "persistence":
-            return self.persistence_forecast(args)
         return self.sim.apply(name, args)
-
-    def grid_state(self):
-        """Engine state plus the status of each critical facility's own circuit."""
-        st = self.sim.state()
-        for h in st["neighborhoods"]:
-            crit = [c for c in self.sim.circuits[h["neighborhood_id"]] if c.critical]
-            h["critical_facility_circuit"] = (None if not crit else
-                                              "powered" if crit[0].up else
-                                              "out, crew assigned" if crit[0].assigned else "out, no crew")
-        return st
-
-    def persistence_forecast(self, args):
-        sim = self.sim
-        try:
-            hours = int(args.get("hours", 6))
-            nid = sim._hood(args["neighborhood_id"])
-        except KeyError as e:
-            return {"error": f"Missing argument {e}"}
-        except ValueError as e:
-            return {"error": str(e)}
-        if not 1 <= hours <= 12:
-            return {"error": "hours must be between 1 and 12"}
-        h, w = sim.H[nid], sim.w
-        p = S.failure_prob(w, sim._tree_norm(h), h["overhead_line_share"])
-        risk = round(1 - (1 - p) ** S.CIRCUITS_PER_NEIGHBORHOOD, 3)
-        out = [{"hours_ahead": k, "temp_f": round(w["temp_f"], 1), "gust_mph": round(w["gust_mph"] or 0, 1),
-                "snowfall_in": round(w["snowfall_in"], 2), "outage_risk": risk}
-               for k in range(1, hours + 1) if sim.t + k < len(sim.weather)]
-        return {"neighborhood_id": nid, "name": h["name"], "forecast": out,
-                "note": "persistence forecast: assumes current weather continues"}
 
     # ---------------------------------------------------------------- helpers
     def _open(self):
