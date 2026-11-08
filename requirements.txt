@@ -4,3 +4,6 @@ psycopg[binary]
 python-dotenv
 scikit-learn
 joblib
+streamlit
+pydeck
+altair

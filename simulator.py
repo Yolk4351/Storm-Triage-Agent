@@ -154,6 +154,8 @@ def km(a, b):
 # Simulation
 # =============================================================================
 def simulate(strategy, weather, hoods, n_crews, seed):
+    if strategy not in ("largest_first", "rules"):
+        raise ValueError(f"unknown strategy {strategy!r}: use 'largest_first' or 'rules'")
     rng = random.Random(seed)
     H = {h["neighborhood_id"]: h for h in hoods}
     max_trees_per_hh = max((h["street_trees"] or 0) / max(h["households"] or 1, 1) for h in hoods) or 1
