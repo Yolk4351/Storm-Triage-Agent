@@ -1,7 +1,7 @@
 """
-Does the result hold across storms? The largest_first-vs-rules comparison of simulator.py, on 7 real Buffalo storms.
+Does the result hold across storms? The largest_first vs rules comparison of simulator.py, on 7 real Buffalo storms.
 
-  largest_first = largest outage first; rules = the "most urgent first" formula (simulator.py names)
+  largest_first = simple largest-outage-first reference policy; rules = hand-built "most urgent first" formula
 
 For each storm: download REAL hourly weather (Open-Meteo) once and cache it in data/storms/,
 then run both policies on many seeds x crew counts. Weather is used raw
@@ -154,7 +154,7 @@ def main():
     lines = ["# Results across storms",
              "",
              f"Real hourly weather for each storm (raw, no snowfall scaling); simulated grid, outages, crews and "
-             f"indoor temperatures. {a.seeds} seeds per cell. Each cell: mean paired % change of rules "
+             f"indoor temperatures. {a.seeds} seeds per cell. Each cell: mean paired % change of rules (hand-built formula) "
              f"vs largest_first (largest outage first) on "
              f"the same seed (negative = better), and in how many seeds it was lower.",
              "", "## Storms", "", "| " + " | ".join(info.columns) + " |", "|" + "---|" * len(info.columns)]
@@ -171,7 +171,7 @@ def main():
                     cells.append("n/a (0 in both)" if np.isnan(pct) else f"{pct:+.1f}% ({better}/{n})")
                 lines.append(f"| {r.storm} | {r.max_gust_mph} mph | {r.min_temp_f}°F | " + " | ".join(cells) + " |")
     md = "\n".join(lines)
-    (HERE / "data" / "storms_summary.md").write_text(md)
+    (HERE / "data" / "storms_summary.md").write_text(md, encoding="utf-8")
     print("\n" + md)
 
 

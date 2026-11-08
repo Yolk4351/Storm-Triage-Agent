@@ -25,9 +25,8 @@ def tag(a):
 
 def run_llm_agent(a):
     from BaseSimulation import run_tick   # imported here so --replay works without the anthropic client
-    sim = AgentSim(load_sim(start=a.start, end=a.end, crews=a.crews, seed=a.seed), forecast=a.forecast)
-    fc = "" if a.forecast == "perfect" else f"_{a.forecast}"
-    folder = os.path.join("cache", f"llm_{tag(a)}_c{a.crews}_s{a.seed}{fc}")
+    sim = AgentSim(load_sim(start=a.start, end=a.end, crews=a.crews, seed=a.seed))
+    folder = os.path.join("cache", f"llm_{tag(a)}_c{a.crews}_s{a.seed}")
     os.makedirs(folder, exist_ok=True)
     while not sim.done:
         path = os.path.join(folder, f"hour_{sim.t}.json")
@@ -61,8 +60,6 @@ def main():
     ap.add_argument("--crews", type=int, default=8)
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--replay", action="store_true")
-    ap.add_argument("--forecast", choices=["perfect", "persistence"], default="perfect",
-                    help="weather forecast the LLM gets from get_forecast (sensitivity run: persistence)")
     ap.add_argument("--save", action="store_true", help="write all three runs to Tiger Cloud")
     a = ap.parse_args()
 
@@ -86,8 +83,7 @@ def main():
         suffix = "" if (a.start, a.end) == FULL_WINDOW else f"-{tag(a)}"   # don't clobber full runs with trials
         with psycopg.connect(os.environ["DATABASE_URL"], autocommit=True) as conn:
             for n, sim in runs.items():
-                fc = f"-{a.forecast}" if n == "llm_agent" and a.forecast != "perfect" else ""
-                run_id = f"{n}{fc}-c{a.crews}-s{a.seed}{suffix}"
+                run_id = f"{n}-c{a.crews}-s{a.seed}{suffix}"
                 S.save(conn, sim.result(n), run_id, a.crews, a.seed,
                        f"Real weather {a.start} to {a.end}; simulated grid, crews, indoor temps; "
                        f"perfect weather forecast for llm_agent")

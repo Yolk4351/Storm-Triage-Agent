@@ -250,7 +250,7 @@ def choose_job(strategy, crew, circuits, H, w, road_kmh, max_trees_per_hh):
         for c in cs:
             if c.up or c.assigned:
                 continue
-            if strategy == "largest_first":
+            if strategy in ("largest_first", "baseline"):         # "baseline" = old name, kept so older scripts work
                 s = c.households * 1000 - c.down_since          # biggest first, then oldest
                 reason = f"Largest open outage: {c.households} homes in {h['name']}"
             else:

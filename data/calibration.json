@@ -22,104 +22,104 @@
   "real_peak_6h": "2022-12-26 09:00:00-05:00",
   "before": {
     "intercept": -9.5,
-    "pearson_r_hourly": -0.518,
-    "pearson_r_6h_smoothed": -0.552,
-    "pearson_r_daily": -0.899,
+    "pearson_r_hourly": -0.589,
+    "pearson_r_6h_smoothed": -0.628,
+    "pearson_r_daily": -0.982,
     "real_peak_6h": "2022-12-26 09:00:00-05:00",
-    "sim_peak_6h": "2022-12-24 09:00:00-05:00",
-    "peak_offset_hours": -48,
-    "sim_mean_households_out": 15365
+    "sim_peak_6h": "2022-12-24 08:00:00-05:00",
+    "peak_offset_hours": -49,
+    "sim_mean_households_out": 6596
   },
   "best": {
     "intercept": -7.5,
-    "pearson_r_hourly": -0.31,
-    "pearson_r_6h_smoothed": -0.338,
-    "pearson_r_daily": -0.807,
+    "pearson_r_hourly": -0.379,
+    "pearson_r_6h_smoothed": -0.408,
+    "pearson_r_daily": -0.825,
     "real_peak_6h": "2022-12-26 09:00:00-05:00",
-    "sim_peak_6h": "2022-12-23 21:00:00-05:00",
-    "peak_offset_hours": -60,
-    "sim_mean_households_out": 50119
+    "sim_peak_6h": "2022-12-24 08:00:00-05:00",
+    "peak_offset_hours": -49,
+    "sim_mean_households_out": 43115
   },
   "grid": [
     {
       "intercept": -11.0,
-      "pearson_r_hourly": -0.474,
-      "pearson_r_6h_smoothed": -0.514,
-      "pearson_r_daily": -0.952,
+      "pearson_r_hourly": -0.488,
+      "pearson_r_6h_smoothed": -0.526,
+      "pearson_r_daily": -0.942,
       "real_peak_6h": "2022-12-26 09:00:00-05:00",
-      "sim_peak_6h": "2022-12-23 18:00:00-05:00",
-      "peak_offset_hours": -63,
-      "sim_mean_households_out": 1583
+      "sim_peak_6h": "2022-12-23 19:00:00-05:00",
+      "peak_offset_hours": -62,
+      "sim_mean_households_out": 954
     },
     {
       "intercept": -10.5,
-      "pearson_r_hourly": -0.543,
-      "pearson_r_6h_smoothed": -0.583,
-      "pearson_r_daily": -0.983,
+      "pearson_r_hourly": -0.467,
+      "pearson_r_6h_smoothed": -0.512,
+      "pearson_r_daily": -0.947,
       "real_peak_6h": "2022-12-26 09:00:00-05:00",
-      "sim_peak_6h": "2022-12-23 20:00:00-05:00",
-      "peak_offset_hours": -61,
-      "sim_mean_households_out": 3366
+      "sim_peak_6h": "2022-12-23 18:00:00-05:00",
+      "peak_offset_hours": -63,
+      "sim_mean_households_out": 1561
     },
     {
       "intercept": -10.0,
-      "pearson_r_hourly": -0.572,
-      "pearson_r_6h_smoothed": -0.616,
-      "pearson_r_daily": -0.972,
-      "real_peak_6h": "2022-12-26 09:00:00-05:00",
-      "sim_peak_6h": "2022-12-24 08:00:00-05:00",
-      "peak_offset_hours": -49,
-      "sim_mean_households_out": 7252
-    },
-    {
-      "intercept": -9.5,
-      "pearson_r_hourly": -0.518,
-      "pearson_r_6h_smoothed": -0.552,
-      "pearson_r_daily": -0.899,
-      "real_peak_6h": "2022-12-26 09:00:00-05:00",
-      "sim_peak_6h": "2022-12-24 09:00:00-05:00",
-      "peak_offset_hours": -48,
-      "sim_mean_households_out": 15365
-    },
-    {
-      "intercept": -9.0,
-      "pearson_r_hourly": -0.459,
-      "pearson_r_6h_smoothed": -0.489,
-      "pearson_r_daily": -0.83,
-      "real_peak_6h": "2022-12-26 09:00:00-05:00",
-      "sim_peak_6h": "2022-12-24 09:00:00-05:00",
-      "peak_offset_hours": -48,
-      "sim_mean_households_out": 24909
-    },
-    {
-      "intercept": -8.5,
-      "pearson_r_hourly": -0.384,
-      "pearson_r_6h_smoothed": -0.41,
-      "pearson_r_daily": -0.785,
-      "real_peak_6h": "2022-12-26 09:00:00-05:00",
-      "sim_peak_6h": "2022-12-24 08:00:00-05:00",
-      "peak_offset_hours": -49,
-      "sim_mean_households_out": 36389
-    },
-    {
-      "intercept": -8.0,
-      "pearson_r_hourly": -0.349,
-      "pearson_r_6h_smoothed": -0.375,
-      "pearson_r_daily": -0.793,
-      "real_peak_6h": "2022-12-26 09:00:00-05:00",
-      "sim_peak_6h": "2022-12-24 08:00:00-05:00",
-      "peak_offset_hours": -49,
-      "sim_mean_households_out": 44072
-    },
-    {
-      "intercept": -7.5,
-      "pearson_r_hourly": -0.31,
-      "pearson_r_6h_smoothed": -0.338,
-      "pearson_r_daily": -0.807,
+      "pearson_r_hourly": -0.539,
+      "pearson_r_6h_smoothed": -0.579,
+      "pearson_r_daily": -0.978,
       "real_peak_6h": "2022-12-26 09:00:00-05:00",
       "sim_peak_6h": "2022-12-23 21:00:00-05:00",
       "peak_offset_hours": -60,
-      "sim_mean_households_out": 50119
+      "sim_mean_households_out": 3309
+    },
+    {
+      "intercept": -9.5,
+      "pearson_r_hourly": -0.589,
+      "pearson_r_6h_smoothed": -0.628,
+      "pearson_r_daily": -0.982,
+      "real_peak_6h": "2022-12-26 09:00:00-05:00",
+      "sim_peak_6h": "2022-12-24 08:00:00-05:00",
+      "peak_offset_hours": -49,
+      "sim_mean_households_out": 6596
+    },
+    {
+      "intercept": -9.0,
+      "pearson_r_hourly": -0.54,
+      "pearson_r_6h_smoothed": -0.575,
+      "pearson_r_daily": -0.93,
+      "real_peak_6h": "2022-12-26 09:00:00-05:00",
+      "sim_peak_6h": "2022-12-24 09:00:00-05:00",
+      "peak_offset_hours": -48,
+      "sim_mean_households_out": 14596
+    },
+    {
+      "intercept": -8.5,
+      "pearson_r_hourly": -0.496,
+      "pearson_r_6h_smoothed": -0.526,
+      "pearson_r_daily": -0.863,
+      "real_peak_6h": "2022-12-26 09:00:00-05:00",
+      "sim_peak_6h": "2022-12-24 09:00:00-05:00",
+      "peak_offset_hours": -48,
+      "sim_mean_households_out": 24471
+    },
+    {
+      "intercept": -8.0,
+      "pearson_r_hourly": -0.424,
+      "pearson_r_6h_smoothed": -0.454,
+      "pearson_r_daily": -0.833,
+      "real_peak_6h": "2022-12-26 09:00:00-05:00",
+      "sim_peak_6h": "2022-12-24 08:00:00-05:00",
+      "peak_offset_hours": -49,
+      "sim_mean_households_out": 34885
+    },
+    {
+      "intercept": -7.5,
+      "pearson_r_hourly": -0.379,
+      "pearson_r_6h_smoothed": -0.408,
+      "pearson_r_daily": -0.825,
+      "real_peak_6h": "2022-12-26 09:00:00-05:00",
+      "sim_peak_6h": "2022-12-24 08:00:00-05:00",
+      "peak_offset_hours": -49,
+      "sim_mean_households_out": 43115
     }
   ],
   "run_date": "2026-11-07"
