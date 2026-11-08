@@ -24,17 +24,17 @@ def tag(a):
     return f"{a.start}_{a.end}".replace(" ", "T").replace(":", "")
 
 
-def run_llm_agent(a):
-    from BaseSimulation import run_tick, SYSTEM, SYSTEM_NO_VULNERABILITY   # imported here so --replay works offline
-    hide = a.ablation == "no_vulnerability"
-    system = SYSTEM_NO_VULNERABILITY if hide else SYSTEM
-    sim = AgentSim(load_sim(start=a.start, end=a.end, crews=a.crews, seed=a.seed), hide_vulnerability=hide)
-    suffix = "_novuln" if hide else ""
-    folder = os.path.join("cache", f"llm_{tag(a)}_c{a.crews}_s{a.seed}{suffix}")
+def drive_llm(sim, folder, system, replay=False, on_hour=None, verbose=True):
+    """Run the LLM dispatcher over a whole storm on an AgentSim, caching each hour in `folder`.
+
+    replay=True reuses cached hours (no API call) and only calls the API for hours not cached yet, so an
+    interrupted run resumes where it stopped. on_hour(t, total) is called after each hour (progress)."""
+    from BaseSimulation import run_tick   # imported here so pure replays work offline
     os.makedirs(folder, exist_ok=True)
+    total = len(sim.weather)
     while not sim.done:
         path = os.path.join(folder, f"hour_{sim.t}.json")
-        if a.replay and os.path.exists(path):
+        if replay and os.path.exists(path):
             with open(path, encoding="utf-8") as f:
                 log = json.load(f)
             for act in log["actions"]:            # re-apply saved decisions, no API call
@@ -46,10 +46,13 @@ def run_llm_agent(a):
                 log = {"tick": sim.t, "actions": [], "explanation": "Skipped: no idle crew this hour.",
                        "skipped": True}
             else:
-                if a.replay:
+                if replay and verbose:
                     print(f"  hour {sim.t}: no cached decision, calling the API")
                 jobs = sim.apply("list_open_jobs", {})    # sent in the first message: saves a round trip
                 signal = sim.apply("get_grid_signal", {})  # Sense: real regional load gap, every hour
+                if "error" in signal:                       # storms outside the NYISO data we have
+                    signal = {"available": False,
+                              "note": "No real NYISO load data for this storm's dates; regional signal unavailable."}
                 log = run_tick(sim, sim.t, system=system,
                                first_observation=[("get_grid_signal", signal), ("list_open_jobs", jobs)])
                 left = min(len(jobs["idle_crews"]), jobs["open_outages_total"]) - sum(
@@ -58,9 +61,22 @@ def run_llm_agent(a):
                     print(f"  ! hour {sim.t}: {left} idle crew(s) left unassigned while outages wait")
             with open(path, "w", encoding="utf-8") as f:
                 json.dump(log, f, indent=2, default=str)
-        print(f"  hour {sim.t}: {sum(1 for x in log['actions'] if x['tool'] == 'dispatch_crew')} dispatches")
+        if verbose:
+            print(f"  hour {sim.t}: {sum(1 for x in log['actions'] if x['tool'] == 'dispatch_crew')} dispatches")
         sim.step()
+        if on_hour:
+            on_hour(sim.t, total)
     return sim
+
+
+def run_llm_agent(a):
+    from BaseSimulation import SYSTEM, SYSTEM_NO_VULNERABILITY
+    hide = a.ablation == "no_vulnerability"
+    system = SYSTEM_NO_VULNERABILITY if hide else SYSTEM
+    sim = AgentSim(load_sim(start=a.start, end=a.end, crews=a.crews, seed=a.seed), hide_vulnerability=hide)
+    suffix = "_novuln" if hide else ""
+    folder = os.path.join("cache", f"llm_{tag(a)}_c{a.crews}_s{a.seed}{suffix}")
+    return drive_llm(sim, folder, system, replay=a.replay)
 
 
 def main():

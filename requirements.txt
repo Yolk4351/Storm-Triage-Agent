@@ -7,3 +7,6 @@ joblib
 streamlit
 pydeck
 altair
+shapely
+fastapi
+uvicorn[standard]

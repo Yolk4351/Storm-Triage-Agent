@@ -1,0 +1,101 @@
+hour,time,action,crew_id,neighborhood_id,outage_id,people,indoor_temp_f,hours_until_below_50f,critical_facility,hours_until_power_restored,reason
+2,Fri Dec 23 02:00,staging,crew-1,elmwood-village,,,,,,0.1,Pre-position before the storm peak at ~hour 8; highest outage risk (0.43).
+2,Fri Dec 23 02:00,staging,crew-2,north-buffalo,,,,,,0.2,Pre-position in a large neighborhood with high forecast risk (0.39).
+2,Fri Dec 23 02:00,staging,crew-3,south-buffalo,,,,,,0.2,"Largest neighborhood, with Mercy Hospital and many medical-device homes."
+2,Fri Dec 23 02:00,staging,crew-4,university-heights,,,,,,0.2,Large population and VA hospital; storm risk rising.
+2,Fri Dec 23 02:00,staging,crew-5,masten-park,,,,,,0.1,Two hospitals and the most medical-device homes; storm risk rising.
+2,Fri Dec 23 02:00,staging,crew-6,west-side,,,,,,0.1,Large population; pre-position ahead of the storm.
+2,Fri Dec 23 02:00,staging,crew-8,fruit-belt,,,,,,0.1,Two hospitals and the highest share of residents 65+; central position.
+3,Fri Dec 23 03:00,staging,crew-7,elmwood-village,,,,,,0.1,Depot crew is the only one not already in a neighborhood; Elmwood has the highest forecast outage risk (~0.43 at +6h) and a large population.
+9,Fri Dec 23 09:00,repair,crew-1,elmwood-village,elmwood-village:6,2455,66.8,18.6,False,5.0,Largest outage (2455 people); crew-1 is among the fastest.
+9,Fri Dec 23 09:00,repair,crew-7,black-rock,black-rock:3,1441,66.8,18.6,False,4.2,Shortest job time (4.2h) for 1441 people.
+9,Fri Dec 23 09:00,repair,crew-3,broadway-fillmore,broadway-fillmore:2,1430,66.8,18.6,False,4.6,"1430 people, 4.6h, leaves faster crews for other jobs."
+9,Fri Dec 23 09:00,repair,crew-2,riverside,riverside:0,1278,66.8,18.6,False,4.5,"Fastest crew for Riverside (4.5h), 1278 people."
+9,Fri Dec 23 09:00,repair,crew-6,riverside,riverside:1,1278,66.8,18.6,False,4.6,"Second Riverside outage, 4.6h."
+9,Fri Dec 23 09:00,repair,crew-5,masten-park,masten-park:2,2044,66.8,18.9,False,4.4,2044 people with most medical-device households; crew-5 fastest (4.4h).
+9,Fri Dec 23 09:00,repair,crew-8,fruit-belt,fruit-belt:6,999,67.1,23.8,False,4.8,"Fruit Belt, crew-8 fastest (4.8h); highest 65+ share."
+10,Fri Dec 23 10:00,repair,crew-4,south-buffalo,south-buffalo:3,2961,66.8,17.4,False,5.1,"Largest affected population (2,961) and the better people-per-job-hour ratio, while both outages are still about 17 hours from going below 50°F."
+14,Fri Dec 23 14:00,repair,crew-2,riverside,riverside:6,1278,62.7,11.5,False,4.3,Longest-without-power large outage with the earliest cold deadline; crew-2 is tied for fastest.
+14,Fri Dec 23 14:00,repair,crew-6,north-buffalo,north-buffalo:5,2684,62.8,11.7,False,5.1,"2,684 people with an early cold deadline."
+14,Fri Dec 23 14:00,repair,crew-3,lovejoy,lovejoy:5,1593,62.0,11.7,False,4.1,"Early cold deadline, and crew-3 is the fastest for Lovejoy (4.1h)."
+14,Fri Dec 23 14:00,repair,crew-8,lovejoy,lovejoy:6,1593,64.2,13.5,False,4.2,Second Lovejoy outage; crew-8 finishes it in 4.2h.
+14,Fri Dec 23 14:00,repair,crew-7,west-side,west-side:5,2251,63.0,12.4,False,4.6,"2,251 people, and crew-7 is tied for fastest."
+14,Fri Dec 23 14:00,repair,crew-5,university-heights,university-heights:2,2642,64.0,12.6,False,4.5,"2,642 people, already without power, and crew-5 is fastest (4.5h)."
+14,Fri Dec 23 14:00,repair,crew-1,south-buffalo,south-buffalo:2,2961,66.6,14.8,False,5.0,"Largest population (2,961) and most medical-device households; crew-1 does it in 5.0h."
+16,Fri Dec 23 16:00,repair,crew-4,university-heights,university-heights:1,2642,63.8,11.9,False,5.0,"Highest people per job-hour (2642 people, 5.0h) with the most medical-device households and one of the earliest cold deadlines."
+19,Fri Dec 23 19:00,repair,crew-2,black-rock,black-rock:3,1441,58.7,6.0,False,4.3,Most urgent outage (6h to 50°F) and crew-2 is fastest on it.
+19,Fri Dec 23 19:00,repair,crew-7,elmwood-village,elmwood-village:5,2455,59.4,6.5,False,5.1,"2455 people, 6.5h to 50°F; crew-7 is fastest on it."
+19,Fri Dec 23 19:00,repair,crew-5,north-buffalo,north-buffalo:6,2684,60.7,7.4,False,5.0,"2684 people, urgent, crew-5 fastest at 5.0h."
+19,Fri Dec 23 19:00,repair,crew-3,allentown,allentown:2,1773,60.6,7.2,False,5.0,"1773 people, 7.2h to 50°F; crew-3 ties for fastest."
+19,Fri Dec 23 19:00,repair,crew-8,west-side,west-side:4,2251,61.0,7.9,False,5.0,"2251 people, 7.9h to 50°F; crew-8 ties for fastest."
+19,Fri Dec 23 19:00,repair,crew-1,south-buffalo,south-buffalo:0,2961,63.4,9.2,True,4.5,2961 people with a critical facility; crew-1 is fastest (4.5h) here and slowest elsewhere.
+20,Fri Dec 23 20:00,repair,crew-6,north-buffalo,north-buffalo:7,2684,60.4,7.0,False,4.8,"Largest population per job-hour (2684 people, 4.8h) among the most urgent outages, finishing before homes drop below 50°F."
+21,Fri Dec 23 21:00,repair,crew-4,south-buffalo,south-buffalo:4,2961,60.2,7.2,False,5.3,"Largest population (2961) with the most medical-device households, at a moderate 5.3h job, and it goes below 50°F in about 7h."
+24,Sat Dec 24 00:00,repair,crew-3,allentown,allentown:3,1773,53.4,2.8,False,4.5,Most urgent outage (cold in 2.8h) and crew-3 is fastest at 4.5h.
+24,Sat Dec 24 00:00,repair,crew-2,elmwood-village,elmwood-village:1,2455,54.6,3.7,False,5.2,"Largest urgent outage (2,455 people, cold in 3.7h); crew-2 is faster than crew-1."
+24,Sat Dec 24 00:00,repair,crew-1,masten-park,masten-park:3,2044,54.7,3.9,False,5.0,"Urgent (cold in 3.9h), 2,044 people and many medical-device homes; crew-1 does it in 5.0h."
+25,Sat Dec 24 01:00,repair,crew-5,north-buffalo,north-buffalo:2,2684,54.5,3.6,False,4.8,"Largest urgent outage (2,684 people) going below 50°F in ~3.6h, before other crews could finish."
+25,Sat Dec 24 01:00,repair,crew-6,masten-park,masten-park:6,2044,54.5,3.6,False,4.7,"2,044 people with the most medical-device households, going cold in 3.6h."
+25,Sat Dec 24 01:00,repair,crew-7,allentown,allentown:4,1773,54.4,3.4,False,4.7,"1,773 people going cold in 3.4h; crew-7 is among the fastest for this job."
+25,Sat Dec 24 01:00,repair,crew-8,broadway-fillmore,broadway-fillmore:1,1430,53.2,2.5,False,4.7,"Most urgent outage (below 50°F in 2.5h, 1,430 people); crew-8 has the shortest job time."
+27,Sat Dec 24 03:00,repair,crew-4,broadway-fillmore,broadway-fillmore:5,1430,51.8,1.4,False,4.8,"Most urgent: 1,430 people drop below 50°F in 1.4h, well before the 4.8h job ends, so it prevents the most cold person-hours per job-hour."
+29,Sat Dec 24 05:00,repair,crew-3,university-heights,university-heights:4,2642,52.9,2.3,False,4.9,"Largest urgent group (2,642 people, 22 medical-device homes) going below 50°F in 2.3h, with a shorter job (4.9h) than North Buffalo's similar outage."
+30,Sat Dec 24 06:00,repair,crew-5,north-buffalo,north-buffalo:3,2684,51.6,1.3,False,4.8,Largest population (2684) about to go cold; crew-5 is fastest on it.
+30,Sat Dec 24 06:00,repair,crew-7,west-side,west-side:1,2251,52.2,1.8,False,4.6,2251 people go below 50°F in under 2 hours; crew-7 is fastest.
+30,Sat Dec 24 06:00,repair,crew-2,black-rock,black-rock:7,1441,51.5,1.2,False,4.3,1441 people near the threshold; crew-2 is fastest at 4.3h.
+30,Sat Dec 24 06:00,repair,crew-1,riverside,riverside:2,1278,50.1,0.1,False,4.9,1278 people at the 50°F threshold now.
+30,Sat Dec 24 06:00,repair,crew-8,kaisertown,kaisertown:7,988,49.9,0.0,False,4.1,988 people at 49.9°F; crew-8 is fastest at 4.1h.
+30,Sat Dec 24 06:00,repair,crew-6,kaisertown,kaisertown:6,988,50.9,0.8,False,4.4,988 people going cold within an hour; short 4.4h job.
+32,Sat Dec 24 08:00,repair,crew-4,south-buffalo,south-buffalo:2,2961,54.7,3.9,False,5.0,"Largest population (2,961, ~30 medical-device households) will drop below 50°F in 3.9h, before the 5.0h job ends, so it prevents the most cold person-hours per job hour."
+32,Sat Dec 24 08:00,alert,,fruit-belt,,,,,,,"Homes in Fruit Belt are at or below 50°F with no power and repair crews are several hours away. Please go to a warming shelter, or stay with family or neighbors who have heat. Keep layers on, close off unused rooms, and check on elderly neighbors and anyone using medical devices."
+34,Sat Dec 24 10:00,repair,crew-3,north-buffalo,north-buffalo:1,2684,55.9,4.8,False,5.1,"Largest population (2,684) per job-hour (5.1h) among outages that will be below 50°F by the time the repair finishes."
+35,Sat Dec 24 11:00,repair,crew-7,west-side,west-side:0,2251,51.5,1.4,False,4.5,Largest population (2251) going cold in 1.4h; crew-7 is fastest.
+35,Sat Dec 24 11:00,repair,crew-2,allentown,allentown:1,1773,49.5,0.0,False,4.9,1773 people at the 50°F threshold now.
+35,Sat Dec 24 11:00,repair,crew-8,lovejoy,lovejoy:4,1593,50.5,0.5,False,4.1,1593 people going cold in 0.5h; crew-8 is tied fastest (4.1h).
+35,Sat Dec 24 11:00,repair,crew-1,riverside,riverside:4,1278,49.5,0.0,False,4.3,1278 people already at threshold; crew-1 is fastest (4.3h).
+35,Sat Dec 24 11:00,repair,crew-6,kaisertown,kaisertown:1,988,52.6,2.4,False,3.8,Short job (3.8h) for 988 people going cold in 2.4h.
+35,Sat Dec 24 11:00,repair,crew-5,fruit-belt,fruit-belt:1,999,47.1,0.0,False,5.4,"Already below 50°F (47.1°F) with 999 people, high 65+ share and medical devices."
+37,Sat Dec 24 13:00,repair,crew-4,elmwood-village,elmwood-village:2,2455,52.0,1.8,False,6.0,"Largest population (2,455) about to drop below 50°F in ~1.8h, so it prevents the most cold person-hours per crew-hour."
+37,Sat Dec 24 13:00,alert,,fruit-belt,,,,,,,Homes in Fruit Belt are at or below 50°F and repair crews are several hours away. Please go to a warming shelter or a warm friend's or relative's home if you can. Check on elderly neighbors and anyone using medical devices.
+39,Sat Dec 24 15:00,repair,crew-6,north-buffalo,north-buffalo:7,2684,53.9,3.6,False,5.3,"Largest population (2,684) that will be below 50°F before the repair finishes, with a moderate 5.3 h job."
+39,Sat Dec 24 15:00,alert,,riverside,,,,,,,"Power is out and indoor temperatures are dropping below 50°F. No crew can finish within about 3 hours. Please go to a warming shelter or a warm friend's or family member's home, and check on neighbors who are elderly or use medical devices."
+39,Sat Dec 24 15:00,alert,,fruit-belt,,,,,,,"Power is out and indoor temperatures are dropping below 50°F. No crew can finish within about 3 hours. Please go to a warming shelter or a warm friend's or family member's home, and check on neighbors who are elderly or use medical devices."
+39,Sat Dec 24 15:00,alert,,kaisertown,,,,,,,"Power is out and indoor temperatures are dropping below 50°F. No crew can finish within about 3 hours. Please go to a warming shelter or a warm friend's or family member's home, and check on neighbors who are elderly or use medical devices."
+40,Sat Dec 24 16:00,repair,crew-1,riverside,riverside:5,1278,47.7,0.0,False,4.3,"1,278 people already below 50°F and crew-1 is the fastest (4.3h)."
+40,Sat Dec 24 16:00,repair,crew-3,university-heights,university-heights:3,2642,55.3,4.8,False,4.4,"2,642 people go cold in about 4.8h. Crew-3 can finish in 4.4h, so this job prevents the most cold-hours."
+40,Sat Dec 24 16:00,repair,crew-2,west-side,west-side:6,2251,54.5,4.3,False,4.5,"2,251 people go cold in about 4.3h. Crew-2 finishes in 4.5h, before they get cold."
+40,Sat Dec 24 16:00,repair,crew-7,allentown,allentown:3,1773,53.6,3.2,False,4.6,"1,773 people go cold in about 3.2h, and crew-7 can finish in 4.6h."
+40,Sat Dec 24 16:00,repair,crew-8,broadway-fillmore,broadway-fillmore:4,1430,50.0,0.0,False,4.5,"1,430 people are at the 50°F threshold now, and crew-8 finishes in 4.5h."
+41,Sat Dec 24 17:00,repair,crew-5,kaisertown,kaisertown:4,988,47.7,0.0,False,4.1,"Already-cold 988 people with the shortest job (4.1h) among cold outages, so the best cold-hours prevented per crew-hour."
+41,Sat Dec 24 17:00,alert,,fruit-belt,,,,,,,"Homes in Fruit Belt are below 50°F and repairs are several hours away. Please go to a warming shelter or a warm neighbor's home, and check on older residents and anyone using medical devices."
+43,Sat Dec 24 19:00,repair,crew-4,fruit-belt,fruit-belt:7,999,44.6,0.0,False,5.0,"Coldest homes (44.6°F, 22h without power) are already accruing cold person-hours, and the repair takes 5h."
+45,Sat Dec 24 21:00,repair,crew-1,riverside,riverside:4,1278,49.4,0.0,False,4.3,1278 people at the 50°F threshold now; crew-1 is the fastest at 4.3h.
+45,Sat Dec 24 21:00,repair,crew-2,west-side,west-side:7,2251,56.5,6.9,False,4.5,2251 people go cold in about 7h; crew-2 is the fastest at 4.5h.
+45,Sat Dec 24 21:00,repair,crew-6,north-buffalo,north-buffalo:0,2684,54.8,5.0,False,4.8,"2684 people go cold in about 5h, so the repair finishes just in time; crew-6 is the fastest at 4.8h."
+45,Sat Dec 24 21:00,repair,crew-8,broadway-fillmore,broadway-fillmore:7,1430,51.1,1.1,False,4.3,1430 people go cold in about 1h; crew-8 is the fastest at 4.3h.
+45,Sat Dec 24 21:00,repair,crew-3,broadway-fillmore,broadway-fillmore:0,1430,52.2,2.4,False,4.7,1430 people go cold in about 2.4h; crew-3 takes it in 4.7h.
+45,Sat Dec 24 21:00,repair,crew-7,south-buffalo,south-buffalo:5,2961,55.0,5.3,False,4.9,"2961 people, the largest outage, go cold in about 5h; crew-7 can finish it in 4.9h."
+45,Sat Dec 24 21:00,alert,,fruit-belt,,,,,,,Power is still out in parts of Fruit Belt and some homes are below 50°F. Repairs are about 5+ hours away. Please go to a warming shelter or a warm friend or relative's home. Check on elderly neighbors and anyone who relies on medical devices.
+46,Sat Dec 24 22:00,repair,crew-5,fruit-belt,fruit-belt:3,999,43.6,0.0,False,5.2,"Coldest home already below 50°F (43.6°F) with 999 people, so fixing it prevents the most cold person-hours."
+46,Sat Dec 24 22:00,alert,,fruit-belt,,,,,,,Many Fruit Belt homes are below 50°F and repairs are still hours away. Please go to a warming shelter if you can. Check on elderly neighbors and anyone who uses medical devices.
+48,Sun Dec 25 00:00,repair,crew-4,fruit-belt,fruit-belt:4,999,45.7,0.0,False,4.8,"Already below 50°F (45.7°F) with 999 people, so every further hour adds directly to the cold score."
+48,Sun Dec 25 00:00,alert,,fruit-belt,,,,,,,Homes in Fruit Belt are at or below 50°F and repairs will take about 5 hours. Please go to a warming shelter or a warm neighbor's home. Check on elderly neighbors and anyone who uses medical devices.
+50,Sun Dec 25 02:00,repair,crew-2,fruit-belt,fruit-belt:6,999,47.9,0.0,False,4.0,Homes already at ~48°F and going cold now; most urgent.
+50,Sun Dec 25 02:00,repair,crew-6,university-heights,university-heights:2,2642,54.7,5.4,False,3.5,"2,642 people go cold in ~5h; crew-6 is fastest (3.5h)."
+50,Sun Dec 25 02:00,repair,crew-1,university-heights,university-heights:6,2642,55.9,6.6,False,3.8,"2,642 people, cold in ~6.6h; large population."
+50,Sun Dec 25 02:00,repair,crew-7,lovejoy,lovejoy:1,1593,56.4,7.5,False,3.2,"1,593 people cold in ~7.5h; short 3.2h job."
+50,Sun Dec 25 02:00,repair,crew-3,broadway-fillmore,broadway-fillmore:2,1430,58.1,8.6,False,3.3,"1,430 people cold in ~8.6h; 3.3h job."
+50,Sun Dec 25 02:00,repair,crew-8,fruit-belt,fruit-belt:2,999,59.0,12.0,False,4.0,Next soonest to go cold (12h) with high 65+ share; Elmwood is warmest (15h).
+52,Sun Dec 25 04:00,repair,crew-5,elmwood-village,elmwood-village:2,2455,63.0,13.1,False,4.2,"Only open outage; 2,455 people, repair finishes in 4.2h well before homes drop below 50°F."
+53,Sun Dec 25 05:00,repair,crew-4,north-buffalo,north-buffalo:4,2684,66.7,16.1,False,4.2,"Only open outage; 2,684 people affected, and a 4.2-hour repair finishes well before homes drop below 50°F."
+54,Sun Dec 25 06:00,staging,crew-1,elmwood-village,,,,,,0.4,Pre-position toward highest forecast outage risk (~0.02) in a large neighborhood.
+54,Sun Dec 25 06:00,staging,crew-6,north-buffalo,,,,,,0.2,"Pre-position toward North Buffalo, the largest neighborhood with elevated risk."
+57,Sun Dec 25 09:00,staging,crew-8,south-buffalo,,,,,,0.5,"No open outages; spread the duplicate Fruit Belt crew to South Buffalo, the largest neighborhood with no crew and a hospital."
+58,Sun Dec 25 10:00,repair,crew-1,elmwood-village,elmwood-village:0,2455,66.7,16.8,False,4.0,Only open outage; crew-1 is tied for fastest at 4.0 job hours.
+62,Sun Dec 25 14:00,repair,crew-3,broadway-fillmore,broadway-fillmore:0,1430,66.8,18.5,False,3.3,Only open outage; crew-3 is already in the neighborhood and has the shortest job time (3.3h).
+65,Sun Dec 25 17:00,staging,crew-5,masten-park,,,,,,0.2,"Pre-position near two hospitals and 7,400 households, which currently have no crew."
+65,Sun Dec 25 17:00,staging,crew-1,allentown,,,,,,0.1,"Pre-position near the children's hospital, where outage risk is rising slightly."
+66,Sun Dec 25 18:00,staging,crew-6,elmwood-village,,,,,,0.3,"No outages; move the duplicate North Buffalo crew to Elmwood Village, which has the highest outage risk (0.009) and the most households without a crew."
+67,Sun Dec 25 19:00,repair,crew-4,riverside,riverside:1,1278,66.8,17.9,False,3.6,"Only open outage; crew-4 has the shortest job time (3.6h) and 1,278 people are affected."
+68,Sun Dec 25 20:00,staging,crew-3,north-buffalo,,,,,,0.4,"North Buffalo is the largest uncovered neighborhood with among the highest outage risk (0.010), and crew-4 is leaving it."
+95,Mon Dec 26 23:00,repair,crew-7,lovejoy,lovejoy:4,1593,67.0,22.3,False,2.9,"Only open outage; crew-7 has the shortest job time (2.9h) for 1,593 people."

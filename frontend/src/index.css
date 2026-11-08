@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+/* Apple-style design tokens. Light is the default; [data-theme="dark"] on <html> switches. */
+:root {
+  color-scheme: light;
+  --bg: #f0e9de;
+  --text: #1d1d1f;
+  --text-2: #6e6e73;
+  --text-3: #8e8e93;
+  --glass: rgba(249, 244, 235, 0.82);
+  --glass-border: rgba(255, 249, 238, 0.7);
+  --glass-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --fill: rgba(80, 55, 20, 0.065);
+  --fill-hover: rgba(80, 55, 20, 0.1);
+  --pill: #fcf7ee;
+  --line: rgba(70, 50, 20, 0.08);
+  --accent: #0071e3;
+  --accent-hover: #0077ed;
+  --red: #ff3b30;
+  --orange: #ff9f0a;
+  --good: #248a3d;
+  --good-bg: rgba(52, 199, 89, 0.12);
+  --bad: #d70015;
+  --bad-bg: rgba(255, 59, 48, 0.1);
+  --track: #c7c7cc;
+  --scrim: rgba(244, 236, 222, 0.38);
+  --menu: rgba(250, 245, 236, 0.97);
+  --map-tint: #ecd5ad;          /* warm cream, multiplied over the basemap */
+  --map-tint-opacity: 0.3;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #000000;
+  --text: #f5f5f7;
+  --text-2: #a1a1a6;
+  --text-3: #8e8e93;
+  --glass: rgba(28, 28, 30, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 10px 40px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --fill: rgba(255, 255, 255, 0.08);
+  --fill-hover: rgba(255, 255, 255, 0.13);
+  --pill: #48484a;
+  --line: rgba(255, 255, 255, 0.1);
+  --accent: #0a84ff;
+  --accent-hover: #409cff;
+  --red: #ff453a;
+  --orange: #ff9f0a;
+  --good: #30d158;
+  --good-bg: rgba(48, 209, 88, 0.16);
+  --bad: #ff6961;
+  --bad-bg: rgba(255, 69, 58, 0.16);
+  --track: #48484a;
+  --scrim: rgba(0, 0, 0, 0.35);
+  --menu: rgba(44, 44, 46, 0.97);
+  --map-tint: #000000;
+  --map-tint-opacity: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Inter, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Frosted-glass panels */
+.glass {
+  background: var(--glass);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+
+/* Text and icons inside panels follow the theme with the same quick fade (utilities that set their own
+   transition, like the sliding pill, keep theirs) */
+@layer base {
+  .glass * {
+    transition-property: color, background-color, border-color, fill, stroke;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+  }
+}
+
+/* Warm tint laid over the map in light mode (multiply keeps dark lines and labels crisp) */
+.map-tint {
+  background: var(--map-tint);
+  opacity: var(--map-tint-opacity);
+  mix-blend-mode: multiply;
+  transition: opacity 0.25s ease, background-color 0.25s ease;
+}
+
+/* Dropdown menu: rounded, nearly opaque so it reads over the map */
+.menu {
+  background: var(--menu);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16), 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* Native dropdown menus get a solid background (the pill itself is translucent), so options stay readable */
+select option {
+  background-color: var(--menu);
+  color: var(--text);
+}
+
+.fade-in { animation: fade-in 0.4s ease-out; }
+.feed-item { animation: rise 0.45s cubic-bezier(0.32, 0.72, 0, 1); }
+.toast { animation: rise 0.35s cubic-bezier(0.32, 0.72, 0, 1); }
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Invisible native slider over the sparkline: it only captures clicks and drags.
+   The visible playhead (line + dot) is drawn by Timeline.tsx at the exact hour. */
+.timeline-range {
+  appearance: none;
+  background: transparent;
+  opacity: 0;
+}
+.timeline-range::-webkit-slider-runnable-track { background: transparent; height: 100%; }
+.timeline-range::-moz-range-track { background: transparent; }
+.timeline-range::-webkit-slider-thumb { appearance: none; width: 16px; height: 44px; }
+.timeline-range::-moz-range-thumb { width: 16px; height: 44px; border: 0; }
+
+.mapboxgl-ctrl-group {
+  border-radius: 14px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+}
+:root[data-theme="dark"] .mapboxgl-ctrl-group { background: #2c2c2e !important; }
+:root[data-theme="dark"] .mapboxgl-ctrl-group button + button { border-top-color: #3a3a3c !important; }
+:root[data-theme="dark"] .mapboxgl-ctrl-icon { filter: invert(1); }

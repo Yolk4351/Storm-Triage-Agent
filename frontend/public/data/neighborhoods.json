@@ -1,0 +1,183 @@
+[
+  {
+    "id": "south-buffalo",
+    "name": "South Buffalo",
+    "lat": 42.848,
+    "lon": -78.81,
+    "population": 24018,
+    "households": 10766,
+    "median_year_built": 1940,
+    "age_65_plus_share": 0.172,
+    "medical_device_households": 239,
+    "street_trees": 6072,
+    "critical_facilities": [
+      "Mercy Hospital of Buffalo"
+    ]
+  },
+  {
+    "id": "kaisertown",
+    "name": "Kaisertown",
+    "lat": 42.873,
+    "lon": -78.795,
+    "population": 7891,
+    "households": 3591,
+    "median_year_built": 1942,
+    "age_65_plus_share": 0.172,
+    "medical_device_households": 88,
+    "street_trees": 630,
+    "critical_facilities": []
+  },
+  {
+    "id": "lovejoy",
+    "name": "Lovejoy",
+    "lat": 42.887,
+    "lon": -78.797,
+    "population": 14394,
+    "households": 5794,
+    "median_year_built": 1943,
+    "age_65_plus_share": 0.129,
+    "medical_device_households": 141,
+    "street_trees": 1399,
+    "critical_facilities": []
+  },
+  {
+    "id": "broadway-fillmore",
+    "name": "Broadway-Fillmore",
+    "lat": 42.894,
+    "lon": -78.832,
+    "population": 14490,
+    "households": 5199,
+    "median_year_built": 1938,
+    "age_65_plus_share": 0.138,
+    "medical_device_households": 123,
+    "street_trees": 2552,
+    "critical_facilities": []
+  },
+  {
+    "id": "fruit-belt",
+    "name": "Fruit Belt",
+    "lat": 42.899,
+    "lon": -78.86,
+    "population": 6885,
+    "households": 3631,
+    "median_year_built": 1957,
+    "age_65_plus_share": 0.217,
+    "medical_device_households": 103,
+    "street_trees": 2817,
+    "critical_facilities": [
+      "Buffalo General Medical Center",
+      "Roswell Park Comprehensive Cancer Center"
+    ]
+  },
+  {
+    "id": "masten-park",
+    "name": "Masten Park",
+    "lat": 42.915,
+    "lon": -78.845,
+    "population": 18991,
+    "households": 7435,
+    "median_year_built": 1939,
+    "age_65_plus_share": 0.168,
+    "medical_device_households": 179,
+    "street_trees": 4074,
+    "critical_facilities": [
+      "Erie County Medical Center (ECMC)",
+      "Sisters of Charity Hospital"
+    ]
+  },
+  {
+    "id": "university-heights",
+    "name": "University Heights",
+    "lat": 42.95,
+    "lon": -78.82,
+    "population": 24127,
+    "households": 9607,
+    "median_year_built": 1939,
+    "age_65_plus_share": 0.124,
+    "medical_device_households": 177,
+    "street_trees": 4484,
+    "critical_facilities": [
+      "VA Western New York Medical Center"
+    ]
+  },
+  {
+    "id": "north-buffalo",
+    "name": "North Buffalo",
+    "lat": 42.95,
+    "lon": -78.855,
+    "population": 19182,
+    "households": 9759,
+    "median_year_built": 1939,
+    "age_65_plus_share": 0.143,
+    "medical_device_households": 147,
+    "street_trees": 7629,
+    "critical_facilities": []
+  },
+  {
+    "id": "riverside",
+    "name": "Riverside",
+    "lat": 42.955,
+    "lon": -78.905,
+    "population": 12797,
+    "households": 4647,
+    "median_year_built": 1938,
+    "age_65_plus_share": 0.078,
+    "medical_device_households": 84,
+    "street_trees": 2286,
+    "critical_facilities": []
+  },
+  {
+    "id": "black-rock",
+    "name": "Black Rock",
+    "lat": 42.935,
+    "lon": -78.9,
+    "population": 14494,
+    "households": 5242,
+    "median_year_built": 1938,
+    "age_65_plus_share": 0.08,
+    "medical_device_households": 84,
+    "street_trees": 1871,
+    "critical_facilities": []
+  },
+  {
+    "id": "elmwood-village",
+    "name": "Elmwood Village",
+    "lat": 42.92,
+    "lon": -78.877,
+    "population": 19067,
+    "households": 8929,
+    "median_year_built": 1938,
+    "age_65_plus_share": 0.166,
+    "medical_device_households": 133,
+    "street_trees": 7900,
+    "critical_facilities": []
+  },
+  {
+    "id": "west-side",
+    "name": "West Side",
+    "lat": 42.905,
+    "lon": -78.895,
+    "population": 20402,
+    "households": 8186,
+    "median_year_built": 1942,
+    "age_65_plus_share": 0.086,
+    "medical_device_households": 140,
+    "street_trees": 4607,
+    "critical_facilities": []
+  },
+  {
+    "id": "allentown",
+    "name": "Allentown",
+    "lat": 42.903,
+    "lon": -78.873,
+    "population": 10785,
+    "households": 6451,
+    "median_year_built": 1938,
+    "age_65_plus_share": 0.152,
+    "medical_device_households": 109,
+    "street_trees": 3952,
+    "critical_facilities": [
+      "Oishei Children's Hospital"
+    ]
+  }
+]
