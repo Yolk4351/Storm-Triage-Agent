@@ -46,6 +46,10 @@ def run_llm_agent(a):
                     print(f"  hour {sim.t}: no cached decision, calling the API")
                 jobs = sim.apply("list_open_jobs", {})    # sent in the first message: saves a round trip
                 log = run_tick(sim, sim.t, first_observation=("list_open_jobs", jobs))
+                left = min(len(jobs["idle_crews"]), jobs["open_outages_total"]) - sum(
+                    1 for x in log["actions"] if x["tool"] == "dispatch_crew" and x["result"].get("ok"))
+                if left > 0:
+                    print(f"  ! hour {sim.t}: {left} idle crew(s) left unassigned while outages wait")
             with open(path, "w", encoding="utf-8") as f:
                 json.dump(log, f, indent=2, default=str)
         print(f"  hour {sim.t}: {sum(1 for x in log['actions'] if x['tool'] == 'dispatch_crew')} dispatches")

@@ -41,6 +41,10 @@ Busy crews cannot be redirected. Actions are validated; if one is rejected, read
 Finish with a 1-3 sentence explanation of this hour's decisions."""
 
 MAX_STEPS = 10  # cap tool-call rounds per hour so it can't loop forever
+# Sonnet 5.5 thinks before acting and thinking counts toward max_tokens. With a long job list and 8 idle
+# crews, 2000 was not enough: replies were cut off mid-thought and no crew was dispatched. You pay only for
+# tokens actually generated, so a high cap costs nothing extra by itself.
+MAX_TOKENS = 16000
 
 
 def run_tick(sim, tick, system=SYSTEM, tools=TOOLS, first_observation=None):
@@ -49,7 +53,7 @@ def run_tick(sim, tick, system=SYSTEM, tools=TOOLS, first_observation=None):
     when = getattr(sim, "w", None)
     stamp = f" ({when['time']:%a %b %d %H:%M})" if when else ""
     text = f"It is hour {tick}{stamp} of the storm. Review the grid and act."
-    log = {"tick": tick, "actions": [], "explanation": "",
+    log = {"tick": tick, "actions": [], "explanation": "", "stop_reasons": [],
            "usage": {"input": 0, "cache_write": 0, "cache_read": 0, "output": 0, "calls": 0}}
     if first_observation:
         name, result = first_observation
@@ -60,9 +64,10 @@ def run_tick(sim, tick, system=SYSTEM, tools=TOOLS, first_observation=None):
     # plus top-level automatic caching for the conversation that grows within the hour.
     system_blocks = [{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}]
 
+    retried = False
     for _ in range(MAX_STEPS):
         resp = client.messages.create(
-            model=MODEL, max_tokens=2000,
+            model=MODEL, max_tokens=MAX_TOKENS,
             system=system_blocks, tools=tools, messages=messages,
             cache_control={"type": "ephemeral"},
         )
@@ -72,10 +77,23 @@ def run_tick(sim, tick, system=SYSTEM, tools=TOOLS, first_observation=None):
         log["usage"]["cache_read"] += u.cache_read_input_tokens or 0
         log["usage"]["output"] += u.output_tokens
         log["usage"]["calls"] += 1
+        log["stop_reasons"].append(resp.stop_reason)
+
+        if resp.stop_reason == "max_tokens":
+            # A cut-off reply is NOT "done": its tool calls may be missing or incomplete. Retry once, then flag.
+            if not retried:
+                retried = True
+                continue
+            log["truncated"] = True
+            print(f"  ! hour {tick}: reply cut off at max_tokens twice; crews left as they are")
+            break
+
         messages.append({"role": "assistant", "content": resp.content})
 
         if resp.stop_reason != "tool_use":
             log["explanation"] = "".join(b.text for b in resp.content if b.type == "text")
+            if resp.stop_reason != "end_turn":
+                print(f"  ! hour {tick}: stopped with stop_reason={resp.stop_reason}")
             break
 
         results = []
