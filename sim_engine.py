@@ -13,8 +13,8 @@ rule-based runs here reproduce simulator.py's numbers exactly.
     sim.metrics()
 
 Rule-based policies for comparison:
-    sim.run_policy("baseline")   # largest outage first (National Grid's stated policy)
-    sim.run_policy("rules")      # A's "most urgent first" formula (called "agent" in simulator.py)
+    sim.run_policy("largest_first")   # simple largest-outage-first reference policy
+    sim.run_policy("rules")           # hand-built "most urgent first" formula
 
 Disclose on the slide: get_forecast uses the real future weather from the replay,
 so the agent has a perfect weather forecast. Outage risk per hour is still random.
@@ -31,7 +31,7 @@ from datetime import datetime
 
 import simulator as S
 
-RULE_POLICIES = {"baseline": "baseline", "rules": "agent"}  # our name -> simulator.py's name
+RULE_POLICIES = {"largest_first": "largest_first", "rules": "rules"}  # policy name -> simulator.choose_job name
 MAX_FORECAST_HOURS = 12
 
 
@@ -161,7 +161,7 @@ class Simulator:
 
     # ------------------------------------------------------- rule-based policies
     def auto_dispatch(self, policy):
-        """Give every idle crew a job using a rule-based policy ('baseline' or 'rules')."""
+        """Give every idle crew a job using a rule-based policy ('largest_first' or 'rules')."""
         name = RULE_POLICIES[policy]
         for cr in self.crews:
             if not self._idle(cr):
@@ -368,11 +368,11 @@ def main():
         sim.run_policy(policy)
         runs[policy] = sim
 
-    keys = list(runs["baseline"].metrics())
-    print(f"\n{'Metric':34}{'Baseline':>12}{'Rules':>12}{'Change':>10}")
+    keys = list(runs["largest_first"].metrics())
+    print(f"\n{'Metric':34}{'largest_first':>14}{'rules':>12}{'Change':>10}")
     for k in keys:
-        b, r = runs["baseline"].metrics()[k], runs["rules"].metrics()[k]
-        print(f"{k:34}{b:>12,}{r:>12,}{(f'{(r - b) / b * 100:+.0f}%' if b else '-'):>10}")
+        b, r = runs["largest_first"].metrics()[k], runs["rules"].metrics()[k]
+        print(f"{k:34}{b:>14,}{r:>12,}{(f'{(r - b) / b * 100:+.0f}%' if b else '-'):>10}")
 
     if args.save:
         import psycopg

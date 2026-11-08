@@ -26,7 +26,8 @@ How cold accrues (use this to judge each job):
 - Use critical facilities and medical-device households to break near-ties. Don't let them outweigh many more people.
 
 Each hour:
-1) Call list_open_jobs. If idle_crews is empty, there is nothing to do: just explain briefly and stop.
+1) The hour's first message already contains the list_open_jobs result. Call list_open_jobs again only if you
+   need a refreshed list (for example after a dispatch was rejected).
 2) Assign every idle crew to a different outage with dispatch_crew, passing crew_id, outage_id and the outage's
    neighborhood_id (the part before ':'). Look at job_hours_by_idle_crew: give each outage to the crew that can
    finish it soonest, and don't send a crew across town when another idle crew is close to it.
@@ -42,17 +43,35 @@ Finish with a 1-3 sentence explanation of this hour's decisions."""
 MAX_STEPS = 10  # cap tool-call rounds per hour so it can't loop forever
 
 
-def run_tick(sim, tick, system=SYSTEM, tools=TOOLS):
+def run_tick(sim, tick, system=SYSTEM, tools=TOOLS, first_observation=None):
+    """One storm hour. first_observation=(tool_name, result) is put in the first message so Claude
+    doesn't spend a round trip asking for it."""
     when = getattr(sim, "w", None)
     stamp = f" ({when['time']:%a %b %d %H:%M})" if when else ""
-    messages = [{"role": "user", "content": f"It is hour {tick}{stamp} of the storm. Review the grid and act."}]
-    log = {"tick": tick, "actions": [], "explanation": ""}
+    text = f"It is hour {tick}{stamp} of the storm. Review the grid and act."
+    log = {"tick": tick, "actions": [], "explanation": "",
+           "usage": {"input": 0, "cache_write": 0, "cache_read": 0, "output": 0, "calls": 0}}
+    if first_observation:
+        name, result = first_observation
+        text += f"\n\nCurrent {name} result:\n{json.dumps(result, default=str)}"
+        log["actions"].append({"tool": name, "input": {}, "result": result, "supplied_in_prompt": True})
+    messages = [{"role": "user", "content": text}]
+    # Prompt caching: an explicit breakpoint after the fixed tools + instructions (reused across hours),
+    # plus top-level automatic caching for the conversation that grows within the hour.
+    system_blocks = [{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}]
 
     for _ in range(MAX_STEPS):
         resp = client.messages.create(
             model=MODEL, max_tokens=2000,
-            system=system, tools=tools, messages=messages,
+            system=system_blocks, tools=tools, messages=messages,
+            cache_control={"type": "ephemeral"},
         )
+        u = resp.usage
+        log["usage"]["input"] += u.input_tokens
+        log["usage"]["cache_write"] += u.cache_creation_input_tokens or 0
+        log["usage"]["cache_read"] += u.cache_read_input_tokens or 0
+        log["usage"]["output"] += u.output_tokens
+        log["usage"]["calls"] += 1
         messages.append({"role": "assistant", "content": resp.content})
 
         if resp.stop_reason != "tool_use":

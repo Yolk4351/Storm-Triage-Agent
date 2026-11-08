@@ -154,7 +154,7 @@ class MiniSim:
         return {"customer_hours_out": self.customer_hours, "critical_facility_hours_out": self.critical_hours}
 
 
-def baseline(sim):
+def largest_first(sim):
     """First-come-first-served: oldest unattended outage gets the next free crew. No foresight."""
     waiting = sorted((n["since"], nid) for nid, n in sim.nodes.items()
                      if n["out"] and not any(c["target"] == nid for c in sim.crews.values()))
@@ -163,10 +163,10 @@ def baseline(sim):
         sim.apply("dispatch_crew", {"crew_id": cid, "node_id": nid})
 
 
-def run_baseline(seed=7):
+def run_largest_first(seed=7):
     sim = MiniSim(seed)
     for _ in range(sim.hours):
-        baseline(sim)
+        largest_first(sim)
         sim.step()
     return sim.metrics()
 
@@ -192,13 +192,13 @@ def run_agent(seed=7, replay=False):
 
 if __name__ == "__main__":
     replay = "replay" in sys.argv
-    totals = {"baseline": [0, 0], "agent": [0, 0]}
+    totals = {"largest_first": [0, 0], "llm_agent": [0, 0]}
     seeds = range(1, 6)
     for seed in seeds:
-        b, a = run_baseline(seed), run_agent(seed, replay=replay)
-        print(seed, "baseline:", b, "| agent:", a)
-        for k, m in (("baseline", b), ("agent", a)):
+        b, a = run_largest_first(seed), run_agent(seed, replay=replay)
+        print(seed, "largest_first:", b, "| llm_agent:", a)
+        for k, m in (("largest_first", b), ("llm_agent", a)):
             totals[k][0] += m["customer_hours_out"]
             totals[k][1] += m["critical_facility_hours_out"]
     for k, (ch, cr) in totals.items():
-        print(f"avg {k:8}: customer_hours_out={ch / len(seeds):.0f}, critical_facility_hours_out={cr / len(seeds):.1f}")
+        print(f"avg {k:13}: customer_hours_out={ch / len(seeds):.0f}, critical_facility_hours_out={cr / len(seeds):.1f}")

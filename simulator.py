@@ -4,10 +4,11 @@ over a simulated Buffalo power grid, once per restoration strategy, and writes t
 results back to the database so `run_scoreboard` fills in.
 
 Strategies (same storm, same random failures, same crews -> a fair comparison):
-  baseline : "largest outage first" (National Grid's stated policy, WKBW 2022)
-  agent    : "most urgent first": people at risk / hours until homes fall below 50°F,
-             weighted for elderly residents, medical-device homes and critical sites,
-             divided by how long the job takes (travel + repair)
+  largest_first : simple "largest outage first" reference policy
+  rules         : hand-built "most urgent first" formula: people at risk / hours until homes
+                  fall below 50°F, weighted for elderly residents, medical-device homes and
+                  critical sites, divided by how long the job takes (travel + repair)
+(The LLM dispatcher, llm_agent, is in BaseSimulation.py / run_llm.py.)
 
 Physical models (simplified, disclose on your slide):
   * Outages: each neighborhood has 8 circuits; each hour every working circuit fails with
@@ -15,7 +16,8 @@ Physical models (simplified, disclose on your slide):
   * Indoor cooling: Newton's law of cooling. Older homes and high wind cool faster.
     Calibrated so a typical older house loses heat over ~1-3 days in mild cold
     (Urban Green Council, "Baby It's Cold Inside").
-  * Crews: travel between neighborhood centers; roads slow down as snow piles up
+  * Crews: generic restoration crews (the crew count is an assumption, default 8) that travel
+    between neighborhood centers; roads slow down as snow piles up
     and in extreme wind.
 
 Usage:
@@ -128,10 +130,13 @@ def hours_to_danger(indoor, outdoor, tau):
     return -tau * math.log((DANGER_F - outdoor) / (indoor - outdoor))
 
 
+FAILURE_INTERCEPT = -9.5   # the one scalar calibrate.py may adjust (see data/calibration.json)
+
+
 def failure_prob(w, tree_norm, overhead):
     """Per circuit, per hour. The 'AI risk model' in its simplest form: replace with a
     trained model (e.g. gradient boosting) if you have time."""
-    z = (-9.5
+    z = (FAILURE_INTERCEPT
          + 0.09 * max((w["gust_mph"] or 0) - 25, 0)
          + 0.35 * w["snowfall_in"]
          + 1.2 * tree_norm
@@ -243,7 +248,7 @@ def choose_job(strategy, crew, circuits, H, w, road_kmh, max_trees_per_hh):
         for c in cs:
             if c.up or c.assigned:
                 continue
-            if strategy == "baseline":
+            if strategy == "largest_first":
                 s = c.households * 1000 - c.down_since          # biggest first, then oldest
                 reason = f"Largest open outage: {c.households} homes in {h['name']}"
             else:
@@ -343,13 +348,13 @@ def main():
         print(f"Storm: {len(weather)} hours, {len(hoods)} neighborhoods, {args.crews} crews, "
               f"snowfall scaled x{snow_scale:.1f} to match NWS\n")
 
-        results = {s: simulate(s, weather, hoods, args.crews, args.seed) for s in ("baseline", "agent")}
+        results = {s: simulate(s, weather, hoods, args.crews, args.seed) for s in ("largest_first", "rules")}
 
-        print(f"{'Metric':34}{'Baseline':>12}{'Agent':>12}{'Change':>10}")
-        for k in results["baseline"].metrics:
-            b, a = results["baseline"].metrics[k], results["agent"].metrics[k]
+        print(f"{'Metric':34}{'largest_first':>14}{'rules':>12}{'Change':>10}")
+        for k in results["largest_first"].metrics:
+            b, a = results["largest_first"].metrics[k], results["rules"].metrics[k]
             change = f"{(a - b) / b * 100:+.0f}%" if b else "-"
-            print(f"{k:34}{b:>12,}{a:>12,}{change:>10}")
+            print(f"{k:34}{b:>14,}{a:>12,}{change:>10}")
 
         if args.dry_run:
             print("\n(dry run: nothing saved)")

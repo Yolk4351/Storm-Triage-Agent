@@ -48,11 +48,11 @@ CREATE TABLE IF NOT EXISTS grid_load_hourly (
 
 -- ---------------------------------------------------------------
 -- Simulation output (time-series), written by the simulator / agent
--- Each run is one strategy playing the same storm: 'baseline' vs 'agent'.
+-- Each run is one strategy playing the same storm: 'largest_first', 'rules' or 'llm_agent'.
 -- ---------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS sim_runs (
   run_id      TEXT PRIMARY KEY,
-  strategy    TEXT NOT NULL,              -- 'baseline' | 'agent'
+  strategy    TEXT NOT NULL,              -- 'largest_first' | 'rules' | 'llm_agent'
   crews       INT,
   seed        INT,
   created_at  TIMESTAMPTZ DEFAULT now(),

@@ -39,7 +39,7 @@ WHERE s.run_id = 'agent-1' AND s.time = '2022-12-23 18:00-05'
   AND s.households_out > 0
 ORDER BY s.hours_to_danger NULLS LAST;
 
--- 6. The demo scoreboard: baseline vs agent
+-- 6. The demo scoreboard: largest_first vs rules vs llm_agent
 SELECT * FROM run_scoreboard ORDER BY strategy;
 
 -- 7. Indoor temperature over time for one neighborhood, both strategies (for charts)
