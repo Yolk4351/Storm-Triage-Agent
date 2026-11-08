@@ -1,83 +1,119 @@
-# Storm Triage Agent: data layer
+# Storm Triage Agent
 
-Real December 2022 Buffalo blizzard data, stored in Tiger Cloud (TigerData).
+**An AI dispatcher that sends power-repair crews to the homes getting cold fastest, tested on the real December 2022 Buffalo blizzard.**
 
-> Utilities can't see indoor temperatures. Given that signal, an AI dispatcher can send crews where homes are about to become unsafe.
+> Utilities fix the biggest outages first, but they can't see indoor temperatures. If they could, an AI dispatcher could send crews where homes are about to become unsafe. We built a simulation to test that idea.
 
-## Restoration policies compared
+Built for UB Hacking 2026 (Radial Ventures track: AI that interacts with the physical world). It follows **Sense → Understand → Act**: real weather and grid data come in, the model estimates how fast each neighborhood's homes are cooling, and the dispatcher assigns crews and explains each choice.
 
-All three play the same storm with the same random failures and the same crews. Crews are generic restoration crews; the crew count (default 8) is an assumption, not a real staffing figure.
+## Results
 
-| Policy | What it is |
+Dec 23–27, 2022 blizzard, 8 crews, the same simulated outages for every policy (seed 2). Lower is better.
+
+| Policy | What it does | Person-hours below 50°F |
+|---|---|---|
+| `largest_first` | The outage affecting the most homes goes first (how utilities usually prioritize) | 494,421 |
+| `rules` | Hand-built formula: people at risk, weighted for vulnerability, by how soon homes drop below 50°F, per hour of crew time | 319,891 |
+| `llm_agent` | Claude Sonnet 5.5 dispatches crews hour by hour with tools | **203,958 / 243,481 / 227,093** (3 runs) |
+
+The AI cut cold person-hours by **51–59%** compared with `largest_first`, and beat `rules` in all three runs. LLM results vary from run to run, which is why all three are listed. They come from **one seed**; the rule-based policies were also tested across 20 seeds (see Robustness below).
+
+**Person-hours below 50°F** means each person in a home below 50°F adds one for every hour it stays that cold. The simulator also tracks medical-device households at risk, critical facilities without power, household-hours out and peak households out.
+
+## How it works
+
+**Simulation** (`simulator.py`, `sim_engine.py`)
+- 13 Buffalo neighborhoods, each with 8 power circuits.
+- Every hour, each circuit has a chance of failing. The chance rises with wind gusts, snow, street-tree density and overhead lines.
+- Homes without power lose heat at a rate set by the age of the housing and the wind. Older, draftier homes cool fastest.
+- Repairs take 2.5–5 hours, and crews travel more slowly as snow builds up.
+- The seed fixes which circuits fail and when. Every policy runs on the same seed, so comparisons are paired.
+- Crews are generic restoration crews. The crew count (default 8) is an assumption, not a real staffing figure.
+
+**AI dispatcher** (`BaseSimulation.py`, `agent_tools.py`, `run_llm.py`)
+- Every simulated hour with an idle crew, Claude gets the open outages and the regional grid signal. It can inspect neighborhoods, then dispatches crews to specific outages and gives a one-line reason for each.
+- Hours with no idle crew are skipped, and prompts are cached. One full storm costs roughly $1.40 in API usage.
+- Every decision is saved under `cache/`, so runs replay for free. `export_audit.py` writes a full decision log to `results/audit_*.csv` and `.md`.
+
+**Grid signal from real NYISO data** (`demand_model.py`)
+- Trained on about 7,300 hours of NYISO WEST zone load and weather from past winters. It predicts normal load with a **2.7%** average error, against 4.4% for "same hour yesterday" (`models/demand_model_metrics.json`).
+- During the blizzard, actual load fell short of the prediction by about **7% on average**. That gap measures the storm's real impact on the grid, and Claude sees it each hour as context.
+- The signal is not an input to the simulated outages or the scores.
+
+**Frontend** (`frontend/`, `server.py`, `replay.py`)
+- React, Vite, Mapbox and deck.gl, with real Census 2020 tract boundaries grouped into the 13 neighborhoods.
+- Replays any storm hour by hour, with Baseline and AI side by side. It colors neighborhoods by outages and cold homes, animates crews, and shows the AI's reasoning.
+- A FastAPI backend serves the replays and can start a new AI run for any storm.
+
+## Data
+
+| Data | Source | Real or simulated |
+|---|---|---|
+| Hourly temperature, wind, gusts, snow | Open-Meteo (ERA5 reanalysis, one downtown Buffalo grid cell). Dec 2022 snowfall scaled to the NWS total of 22.3 in. | Real |
+| Grid load | NYISO WEST zone (Zone A) and NY total, MW | Real |
+| Population, households, year built, share aged 65+ | Census ACS 2023 5-year estimates, by tract | Real |
+| Street trees | City of Buffalo Tree Inventory (Open Data Buffalo), live trees only | Real (current inventory, not 2022) |
+| Electricity-dependent medical equipment | HHS emPOWER, Medicare beneficiaries by ZIP, split to tracts by households | Real (current release, not 2022) |
+| Overhead line share | None found | Placeholder (0.85 everywhere) |
+| Outages, crews, repair times, indoor temperatures | Simulator | Simulated |
+
+Census tracts are assigned to the nearest neighborhood center, so neighborhood boundaries are approximate. Full sources are in `data/sources.json`.
+
+### Database (Tiger Cloud / TimescaleDB)
+
+| Table | Contents |
 |---|---|
-| `largest_first` | Simple reference policy: the outage affecting the most homes goes first |
-| `rules` | Hand-built formula: people at risk, weighted for vulnerability, by how soon homes drop below 50°F, per hour of crew time |
-| `llm_agent` | Claude as dispatcher, choosing crews hour by hour with tools (`BaseSimulation.py`, `run_llm.py`) |
+| `weather_hourly`, `grid_load_hourly` | Real weather and NYISO load (hypertables) |
+| `storm_summary_3h` | 3-hour storm summary (continuous aggregate) |
+| `neighborhoods` | 13 neighborhoods and their attributes |
+| `sim_runs`, `neighborhood_state`, `crew_events` | Simulated runs, per-neighborhood hourly state, and crew moves with the AI's explanations |
+| `run_scoreboard` | Score per run (view) |
 
-## Setup (5 minutes)
+`queries.sql` has ready-made queries.
 
-1. Create a **free Tiger Cloud service** at tigerdata.com and copy its connection string.
-2. In this folder:
-   ```bash
-   python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-   pip install -r requirements.txt
-   cp .env.example .env        # paste your connection string into .env
-   ```
-3. Get the data and load it:
-   ```bash
-   python fetch_storm_data.py     # downloads real weather + NYISO load -> data/*.csv
-   python load_to_tigerdata.py    # creates tables and loads everything
-   ```
-   Both scripts are safe to re-run.
+## Robustness and limitations
 
-## What's in the database
+- **Seeds:** across 20 seeds with 8 crews, `rules` beat `largest_first` on cold person-hours in 20 of 20 (−35% on average) (`results/eval_seeds.md`). The AI has been run on one seed so far.
+- **Crew count matters most:** with 12 or more crews, few homes ever get cold, so any policy does well. The AI's advantage shows up when crews are scarce.
+- **Other storms:** we replayed 6 other real Buffalo storms (`data/storms_summary.md`). Only the 2022 blizzard produced cold homes in the simulation; the others scored 0 under every policy.
+- **Calibration** (`calibrate.py`, `data/calibration.json`): we compared the shape over time of simulated outages with real NYISO lost load. **They do not match** (correlation −0.59). Simulated outages peak around Dec 24, about 2 days before real lost load peaks. Adjusting the one scalar we allowed (the failure intercept) never gave a positive correlation, so we kept −9.5. The likely cause is restoration speed: in reality outages piled up for days, while the simulator repairs them within hours. Lost load also reflects closed businesses and the driving ban, so this is a plausibility check, not validation.
+- **Database:** the shared `neighborhoods` table may carry medical-device numbers from an earlier load. `data/neighborhoods.csv` holds the official values.
 
-| Table | Type | Contents | Real or simulated |
-|---|---|---|---|
-| `weather_hourly` | hypertable | Buffalo hourly temp, wind, gusts, snow (Open-Meteo / ERA5) | Real |
-| `grid_load_hourly` | hypertable | NYISO WEST zone (Zone A) + NY total load, MW | Real |
-| `neighborhoods` | table | 13 Buffalo neighborhoods + attributes | Estimates until you replace the `_est` columns in `data/neighborhoods.csv` |
-| `sim_runs` | table | One row per simulation run (`largest_first`, `rules` or `llm_agent`) | Simulated |
-| `neighborhood_state` | hypertable | Per neighborhood, per hour: outage risk, households out, indoor temp, hours to danger | Simulated |
-| `crew_events` | hypertable | Crew dispatches/arrivals + the agent's explanation | Simulated |
-| `storm_summary_3h` | continuous aggregate | 3-hour storm summary (max gust, min temp, snowfall) | Real |
-| `run_scoreboard` | view | **The demo scoreboard**: person-hours below 50°F, critical facility hours out, etc., per run | Simulated |
+## Run it
 
-`queries.sql` has ready-made queries: worst storm hours, weather vs. grid load, a forecast lookup the agent can use as a tool, the live city state, and the scoreboard.
+Python setup:
 
-## For the simulator team
-
-Write one `sim_runs` row per run, then one `neighborhood_state` row per neighborhood per hour, and a `crew_events` row each time a crew moves. The scoreboard updates automatically:
-
-```sql
-SELECT * FROM run_scoreboard;
+```bash
+python -m venv .venv
+.venv\Scripts\activate            # macOS/Linux: source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
-## Plausibility check against real load (`calibrate.py`)
+Create a `.env` file with `DATABASE_URL` (your Tiger Cloud connection string) and `CENSUS_API_KEY`. Set `ANTHROPIC_API_KEY` to run the AI.
 
-We compare the *shape over time* of two curves for Dec 23–27, 2022:
-- **Real:** NYISO WEST zone lost load = actual load minus what `demand_model.py` expected from the weather.
-- **Simulated:** households without power per hour under `largest_first`, averaged over 10 seeds.
+Load the data:
 
-Only the shape is compared (correlation, peak timing), never absolute MW: the NYISO zone is much larger than our 13 neighborhoods. Lost load also reflects changed human behavior (closed businesses, the driving ban, the Christmas holiday), so this is a **plausibility check, not validation**.
+```bash
+python fetch_storm_data.py
+python load_to_tigerdata.py
+```
 
-**Result:** the curves do not match. Hourly correlation is **−0.59** at the current failure intercept (−9.5), with the real neighborhood data. Simulated outages peak around Dec 24, about 2 days before real lost load peaks (Dec 26, 09:00). A coarse grid search over the failure intercept (−11 to −7.5), the only scalar we allowed ourselves to adjust, never gave a positive correlation (best −0.38). So we **kept −9.5**: the intercept scales how many outages happen but cannot move when they happen. The likely gap is restoration speed. In the real storm outages piled up for days while crews could not reach them; in the simulator they are repaired within hours. Full grid and decision: `data/calibration.json`.
+Run the simulation:
 
-## Neighborhood data sources (`fetch_real_attributes.py`, details in `data/sources.json`)
+```bash
+python simulator.py --crews 8 --seed 2                    # largest_first and rules
+python run_llm.py --crews 8 --seed 2                      # AI dispatcher (API cost), resumes from cache
+python run_llm.py --crews 8 --seed 2 --replay             # replay a saved AI run, no API calls
+python eval_seeds.py                                      # 20 seeds x 4/8/12 crews, no API calls
+python evaluate_storms.py                                 # all 7 storms, no API calls
+```
 
-| Column | Status | Source | Notes |
-|---|---|---|---|
-| `street_trees` | **Real** | City of Buffalo [Tree Inventory](https://data.buffalony.gov/d/n4ni-uuec) (DPW Parks & Streets), Public Domain | Live trees only (vacant sites and stumps excluded), each assigned to the nearest neighborhood center within 1.5 km; 19,146 of 69,419 trees fall outside that radius and are not counted. Current inventory, not December 2022. Retrieved 2026-11-07. |
-| `medical_device_households` | **Real, allocated** | [HHS emPOWER](https://services2.arcgis.com/ZQ4jTQn6k7VPXEwO/arcgis/rest/services/HHS_emPOWER_REST_Service_Public/FeatureServer/1), ZIP level, public HHS data | Medicare beneficiaries (people, Medicare only, not households) with a claim for electricity-dependent equipment. ZIP counts split to census tracts with the Census 2020 ZCTA–tract relationship file, weighted by tract households. Current monthly release, not December 2022. Retrieved 2026-11-07. |
-| `overhead_line_share_est` | **Placeholder** | none found | 0.85 everywhere; no public data on overhead vs underground lines by neighborhood. |
-| population, households, year built, 65+ share | Real | Census ACS 2023 5-year, by tract | Tracts assigned to the nearest neighborhood center, so boundaries are approximate. |
+Frontend: put `VITE_MAPBOX_TOKEN=...` in `frontend/.env.local`, then run:
 
-With real tree counts, outage risk now differs by neighborhood: 0.19 (Kaisertown) to 0.42 (Elmwood Village) at the worst storm hour, where before it was 0.42 everywhere. The failure model scales tree density relative to the densest neighborhood, so most neighborhoods now fail less often and the simulated storm is milder overall.
+```bash
+python -m uvicorn server:app --port 8000
+```
 
-**Official values are `data/neighborhoods.csv`.** The shared Tiger Cloud `neighborhoods` table currently has the same tree counts but different medical-device numbers from an earlier load. Run `python load_to_tigerdata.py` once the team agrees, so the simulator (which reads the database) matches this file.
-
-## Data disclosure (required by the hackathon rules)
-- **Real:** hourly weather (Open-Meteo ERA5 reanalysis for one downtown grid cell) and NYISO load.
-- **Estimated:** neighborhood attributes until replaced with Census / Open Data Buffalo values; map coordinates are approximate.
-- **Real (added):** street tree counts (Open Data Buffalo) and electricity-dependent Medicare beneficiaries (HHS emPOWER), both current rather than 2022 snapshots.
-- **Simulated:** power line types (placeholder 0.85), outages, crews, repair times, indoor temperatures.
+```bash
+cd frontend && npm install && npm run dev
+```
